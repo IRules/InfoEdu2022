@@ -1,0 +1,67 @@
+.settings {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0a0b0c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__form {
+    width: 60vw;
+    height: 80vh;
+    background-color: #1d1f22;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__formSidebar {
+    width: 10vw;
+    height: 70vh;
+    border-right: 2px solid #9fa2a8;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-flow: row;
+    grid-template-rows: 60px 60px 60px 60px;
+}
+
+.settings__formSidebar > button {
+    height: 50px;
+}
+
+.settings__formContent {
+    width: 45vw;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__formContentSettings {
+    width: 40vw;
+    height: 70vh;
+    background-color: #aeb1b9;
+    padding: 20px;
+    display: block;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.settings__formContentSettingsAccount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__formContentSettingsAccountMessage {
+    margin-left: 20px;
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings__formContentSettingsPicker {
+    display: grid;
+}

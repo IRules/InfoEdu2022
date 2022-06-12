@@ -1,0 +1,63 @@
+.card {
+    height: 300px;
+    width: 330px;
+    background-color: #0a0b0c;
+    border-radius: 20px;
+}
+
+.card__image {
+    background-image: url("https://univero.cc/public/media/university/imgs/image-1/1616069697_118939302.jpg");
+    background-size: cover;
+    height: 220px;
+    width: 330px;
+    border-radius: 20px;
+}
+
+.card__imageSelector {
+    display: none;
+}
+
+.card__image:hover > .card__imageSelector {
+    display: flex;
+    height: inherit;
+    width: inherit;
+    justify-content: right;
+}
+
+.card__imageSelectorTag {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 10px 0px 0px 10px;
+    width: 150px;
+    height: 22px;
+    background-color: #0a0b0c;
+    opacity: 0.8;
+}
+
+.card__text {
+    height: 80px    ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card__textBox {
+    display: block;
+    margin-left: 20px;
+    width: 220px;
+}
+
+.card__textBoxTitle {
+    color: #f1f2f3;
+}
+
+.card__textBoxLocation {
+    color: #9fa2a8;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
