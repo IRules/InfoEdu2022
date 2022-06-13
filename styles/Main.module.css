@@ -1,0 +1,65 @@
+.main__navbar {
+    height: 7vh;
+    width: 100vw;
+    background-color: #ff5404;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__navbarFiller {
+    width: 50%;
+}
+
+.main__navbarButtons {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__image {
+    width: 100vw;
+    height: 93vh;
+    background-image: linear-gradient(to bottom, rgba(179, 77, 10, 0.6), rgba(179, 77, 10, 0.6)), url("/assets/maincover.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__imageText {
+    width: 30vw;
+    text-align: center;
+}
+
+.main__imageText > h1 {
+    color: #f1f2f3;
+    font-size: 44px;
+    font-weight: 900;
+    text-align: left;
+}
+
+.main__imageText > h3 {
+    color: #f1f2f3;
+    text-align: left;
+}
+
+.main__imageFiller {
+    width: 10%;
+}
+
+.main__imageForm {
+    width: 30vw;
+    height: 60vh;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__imageFormSteps {
+    background-color: #9fa2a8;
+    padding: 20px;
+    border-radius: 30px;
+}

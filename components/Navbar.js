@@ -17,7 +17,6 @@ import styles from '../styles/Navbar.module.css';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
-import logo from '../assets/logo.png';
 
 function Navbar() {
   const [anchorMenu, setAnchorMenu] = React.useState(null);
@@ -106,7 +105,7 @@ function Navbar() {
           }}
         >
           <MenuItem>
-            <a href="/settings">Settings</a>
+            <Link href="/settings">Settings</Link>
           </MenuItem>
           <Divider />
           <MenuItem>Logout</MenuItem>

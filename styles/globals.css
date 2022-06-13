@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: 'Anton', sans-serif;
-
+  background-color: #0a0b0c;
 }
 
 a {
