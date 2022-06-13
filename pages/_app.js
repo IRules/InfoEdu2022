@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, Fade, ThemeProvider } from '@mui/material';
 import '../styles/globals.css';
 
 const theme = createTheme({
