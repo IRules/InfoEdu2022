@@ -4,7 +4,6 @@ import {
   Divider,
   IconButton,
   InputBase,
-  Link,
   ListItemIcon,
   ListItemText,
   Menu,
@@ -17,6 +16,7 @@ import styles from '../styles/Navbar.module.css';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Navbar() {
   const [anchorMenu, setAnchorMenu] = React.useState(null);

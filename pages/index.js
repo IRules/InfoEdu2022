@@ -7,7 +7,6 @@ import {
   Button,
   FormControl,
   InputLabel,
-  Link,
   MenuItem,
   Paper,
   Select,
@@ -19,6 +18,7 @@ import {
 } from '@mui/material';
 import { Box } from '@mui/system';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function Home() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
