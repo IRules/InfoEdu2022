@@ -1,7 +1,6 @@
 .navbar {
     width: 100vw;
     height: 8vh;
-    color: rebeccapurple;
     background-color: #1d1f22;
     display: flex;
     justify-content: center;
@@ -17,4 +16,18 @@
     align-items: center;
     justify-content: center;
     width: 90vw
+}
+@media screen and (min-width: 876px) {
+    .navbar__mobile {
+        display: none;
+    }
+}
+@media screen and (max-width: 875px) {
+    .navbar__search {
+        display: none;
+    }
+
+    .navbar__filler {
+        width: 40vw;
+    }
 }

@@ -20,37 +20,39 @@ export default function Facultati() {
     <Fade>
       <div className={styles.app}>
         <Navbar />
-        <BottomNavigation
-          sx={{ backgroundColor: '#fa6504', height: '5vh' }}
-          value={value}
-          onChange={handleChange}
-        >
-          <BottomNavigationAction
-            label="Recente"
-            value="Recente"
-            icon={<RestoreIcon />}
-          />
-          <BottomNavigationAction
-            label="Stiinte Matematice"
-            value="Stiinte Matematice"
-            icon={<FunctionsIcon />}
-          />
-          <BottomNavigationAction
-            label="Inginierie"
-            value="Inginierie"
-            icon={<EngineeringIcon />}
-          />
-          <BottomNavigationAction
-            label="Arhitectura"
-            value="Arhitectura"
-            icon={<ArchitectureIcon />}
-          />
-          <BottomNavigationAction
-            label="Limba & Literatura"
-            value="Limba & Literatura"
-            icon={<TranslateIcon />}
-          />
-        </BottomNavigation>
+        <div className={styles.app__categories}>
+          <BottomNavigation
+            sx={{ backgroundColor: '#d15c05', height: '5vh' }}
+            value={value}
+            onChange={handleChange}
+          >
+            <BottomNavigationAction
+              label="Recente"
+              value="Recente"
+              icon={<RestoreIcon />}
+            />
+            <BottomNavigationAction
+              label="Stiinte Matematice"
+              value="Stiinte Matematice"
+              icon={<FunctionsIcon />}
+            />
+            <BottomNavigationAction
+              label="Inginierie"
+              value="Inginierie"
+              icon={<EngineeringIcon />}
+            />
+            <BottomNavigationAction
+              label="Arhitectura"
+              value="Arhitectura"
+              icon={<ArchitectureIcon />}
+            />
+            <BottomNavigationAction
+              label="Limba & Literatura"
+              value="Limba & Literatura"
+              icon={<TranslateIcon />}
+            />
+          </BottomNavigation>
+        </div>
         <List></List>
       </div>
     </Fade>

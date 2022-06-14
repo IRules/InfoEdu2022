@@ -3,3 +3,9 @@
   width: 100vw;
   background-color: #0a0b0c;
 }
+
+@media screen and (max-width: 875px) {
+  .app__categories {
+      display: none;
+  }
+}

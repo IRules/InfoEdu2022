@@ -2,6 +2,7 @@ import {
   alpha,
   Avatar,
   Divider,
+  Icon,
   IconButton,
   InputBase,
   ListItemIcon,
@@ -17,6 +18,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
 import Link from 'next/link';
+import MenuIcon from '@mui/icons-material/Menu';
 
 function Navbar() {
   const [anchorMenu, setAnchorMenu] = React.useState(null);
@@ -73,12 +75,44 @@ function Navbar() {
       },
     },
   }));
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open2 = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className={styles.navbar}>
       <div className={styles.navbar__logo}>
         <Avatar />
       </div>
-
+      <div className={styles.navbar__filler}></div>
+      <div className={styles.navbar__mobile}>
+        <IconButton onClick={handleClick}>
+          <MenuIcon color="primary" fontSize="large" />
+        </IconButton>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open2}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={handleClose}>s</MenuItem>
+          <MenuItem onClick={handleClose}>Ghid Facultate</MenuItem>
+          <MenuItem onClick={handleClose}>Despre noi</MenuItem>
+          <MenuItem onClick={handleClose}>Knowledgebase</MenuItem>
+          <Divider />
+          <MenuItem onClick={handleClose}>Register</MenuItem>
+          <MenuItem onClick={handleClose}>Log in</MenuItem>
+        </Menu>
+      </div>
       <div className={styles.navbar__search}>
         <Search>
           <SearchIconWrapper>
@@ -90,8 +124,7 @@ function Navbar() {
           />
         </Search>
       </div>
-
-      <div className={styles.settings}>
+      <div className={styles.navbar__settings}>
         <IconButton onClick={handleMenu}>
           <Avatar sx={{ fontSize: 30 }} color="primary" />
         </IconButton>

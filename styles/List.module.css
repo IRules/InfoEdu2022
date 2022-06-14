@@ -41,3 +41,21 @@
     border-radius: 10px;
     border: 3px none #ffffff;
   }
+
+  @media screen and (max-width: 1830px) {
+    .list__container {
+      grid-template-columns: auto auto auto;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    .list__container {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
+    .list__container {
+      grid-template-columns: auto;
+    }
+  }
