@@ -8,11 +8,11 @@
 }
 
 .main__navbarFiller {
-    width: 50%;
+    width: 30%;
 }
 
 .main__navbarButtons {
-    width: 30%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,4 +62,102 @@
     background-color: #9fa2a8;
     padding: 20px;
     border-radius: 30px;
+}
+
+.main__navbar > button {
+    max-height: 100px;
+}
+
+@media screen and (max-width: 1390px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: flex;
+        min-height: 93vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 30vw;
+    }
+
+    .main__imageForm {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 1391px) {
+    .main__navbarMobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: flex;
+        min-height: 93vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 30vw;
+    }
+
+    .main__imageForm {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: grid;
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 60vw;
+    }
+
+    .main__imageForm {
+        height: 120vh;
+        width: 60vw;
+    }
 }

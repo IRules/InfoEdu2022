@@ -5,8 +5,11 @@ import {
   Alert,
   Avatar,
   Button,
+  Divider,
   FormControl,
+  IconButton,
   InputLabel,
+  Menu,
   MenuItem,
   Paper,
   Select,
@@ -20,6 +23,7 @@ import { Box } from '@mui/system';
 import { useState } from 'react';
 import Link from 'next/link';
 import { Fade } from 'react-awesome-reveal';
+import MenuIcon from '@mui/icons-material/Menu';
 
 export default function Home() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -54,6 +58,15 @@ export default function Home() {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   const steps = [
@@ -155,6 +168,28 @@ export default function Home() {
             <Button variant="contained">Register</Button>
             &#160;&#160;&#160;
             <Button variant="contained">Log in</Button>
+          </div>
+          <div className={styles.main__navbarMobile}>
+            <IconButton onClick={handleClick}>
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              <MenuItem onClick={handleClose}>Facultati</MenuItem>
+              <MenuItem onClick={handleClose}>Ghid Facultate</MenuItem>
+              <MenuItem onClick={handleClose}>Despre noi</MenuItem>
+              <MenuItem onClick={handleClose}>Knowledgebase</MenuItem>
+              <Divider />
+              <MenuItem onClick={handleClose}>Register</MenuItem>
+              <MenuItem onClick={handleClose}>Log in</MenuItem>
+            </Menu>
           </div>
         </div>
         <div className={styles.main__image}>
