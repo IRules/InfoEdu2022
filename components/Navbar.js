@@ -144,6 +144,7 @@ function Navbar() {
           <MenuItem>Logout</MenuItem>
         </Menu>
       </div>
+      <div className={styles.navbar__searchMobile}></div>
     </div>
   );
 }

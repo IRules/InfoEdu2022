@@ -1,67 +1,177 @@
 .settings {
     width: 100vw;
-    height: 100vh;
-    background-color: #0a0b0c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: left;
 }
 
-.settings__form {
-    width: 60vw;
-    height: 80vh;
-    background-color: #1d1f22;
-    border-radius: 20px;
+
+.settings__navbar {
+    height: 70px;
+    margin-bottom: 30px;
+    width: 100vw;
+    background-color: aqua;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 
-.settings__formSidebar {
-    width: 10vw;
-    height: 70vh;
-    border-right: 2px solid #9fa2a8;
+.settings__navbarBack {
+    height: inherit;
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+
+.settings__navbarFiller {
+    width: 80%;
+}
+
+.settings__container {
+    width: auto;
+    height: auto;
     display: grid;
-    grid-template-columns: auto;
-    grid-auto-flow: row;
-    grid-template-rows: 60px 60px 60px 60px;
-}
-
-.settings__formSidebar > button {
-    height: 50px;
-}
-
-.settings__formContent {
-    width: 45vw;
-    height: 70vh;
-    display: flex;
-    align-items: center;
     justify-content: center;
-}
-
-.settings__formContentSettings {
-    width: 40vw;
-    height: 70vh;
-    background-color: #aeb1b9;
-    padding: 20px;
-    display: block;
-    border-radius: 0px 20px 20px 0px;
-}
-
-.settings__formContentSettingsAccount {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    width: 100vw;
+    grid-template-areas:
+    'account tests'
+    'preferences tests';
+    gap: 60px;
 }
 
-.settings__formContentSettingsAccountMessage {
-    margin-left: 20px;
-    width: 25vw;
+.settings__containerAccount {
+    grid-area: account;
+    width: 35vw;
+    height: 250px;
+    background-color: #9fa2a8;
+    border-radius: 30px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.settings__formContentSettingsPicker {
+.settings__containerAccountPfp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.settings__containerAccountName {
+    width: 300px;
+    margin-left: 30px;
+}
+
+.settings__containerAccountInfo {
+    width: 240px;
+    margin-right: 10px;
+}
+
+.settings__containerTest {
+    grid-area: tests;
+    width: 600px;
+    height: 650px;
+    background-color: #9fa2a8;
+    border-radius: 30px;
+}
+
+.settings__containerTestInfo {
+    width: inherit;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings__containerTestProfessions > h1{
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px;
+}
+
+.settings__containerTestProfessions {
+    scrollbar-width: 8px;
+    scrollbar-color: #ff5404 #1d1f22;
+  }
+  .settings__containerTestProfessions::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .settings__containerTestProfessions::-webkit-scrollbar-track {
+    background: #1d1f22;
+  }
+  
+  .settings__containerTestProfessions::-webkit-scrollbar-thumb {
+    background-color: #ff5404;
+    border-radius: 10px;
+    border: 3px none #ffffff;
+  }
+
+  .settings__containerButtons {
+    height: 100px;
+    width: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .settings__containerPreferences {
+    grid-area: preferences;
+    width: 35vw;
+    height: 340px;
+    background-color: #9fa2a8;
+    border-radius: 30px;
     display: grid;
-}
+    align-items: center;
+    padding: 10px;
+  }
+
+  @media screen and (min-width: 1301px) {
+  }
+
+  @media screen and (max-width: 1300px) {
+    .settings {
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .settings__container {
+        width: 100vw;
+        margin-left: 0px;
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .settings__container {
+        grid-template-areas:
+    'account'
+    'preferences'
+    'tests';
+    margin-bottom: 30px;
+    }
+
+    .settings__containerAccount {
+        width: 80vw;
+    }
+
+    .settings__containerTest {
+        width: 80vw;
+    }
+
+    .settings__containerPreferences {
+        width: 80vw;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .settings__containerAccountPfp {
+        display: none;
+    }
+
+    .settings__containerTestInfo {
+        height: auto;
+    }
+  }
