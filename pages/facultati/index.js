@@ -22,34 +22,24 @@ export default function Facultati() {
         <Navbar />
         <div className={styles.app__categories}>
           <BottomNavigation
-            sx={{ backgroundColor: '#d15c05', height: '5vh' }}
+            sx={{ backgroundColor: '#F06539', height: '5vh' }}
             value={value}
             onChange={handleChange}
           >
+            <BottomNavigationAction value="Recente" icon={<div>Fizicas</div>} />
+            <BottomNavigationAction value="Recente1" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recente2" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recente3" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recent4" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recent5" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recent6" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recente7" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recente8" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recent9" icon={<div>Fizica</div>} />
+            <BottomNavigationAction value="Recent20" icon={<div>Fizica</div>} />
             <BottomNavigationAction
-              label="Recente"
-              value="Recente"
-              icon={<RestoreIcon />}
-            />
-            <BottomNavigationAction
-              label="Stiinte Matematice"
-              value="Stiinte Matematice"
-              icon={<FunctionsIcon />}
-            />
-            <BottomNavigationAction
-              label="Inginierie"
-              value="Inginierie"
-              icon={<EngineeringIcon />}
-            />
-            <BottomNavigationAction
-              label="Arhitectura"
-              value="Arhitectura"
-              icon={<ArchitectureIcon />}
-            />
-            <BottomNavigationAction
-              label="Limba & Literatura"
-              value="Limba & Literatura"
-              icon={<TranslateIcon />}
+              value="Recent23"
+              icon={<div>Fizicas</div>}
             />
           </BottomNavigation>
         </div>
