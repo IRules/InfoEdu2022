@@ -13,10 +13,12 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
+    "chart.js": "^3.8.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-awesome-reveal": "^3.8.1",
-    "react-countup": "^6.2.0",
+    "react-chartjs-2": "^4.2.0",
+    "react-countup": "^6.3.0",
     "react-dom": "18.1.0",
     "react-virtuoso": "^2.13.2",
     "react-window": "^1.8.7"

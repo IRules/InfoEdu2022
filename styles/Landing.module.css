@@ -1,0 +1,163 @@
+.main__navbar {
+    height: 7vh;
+    width: 100vw;
+    background-color: #ff5404;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__navbarFiller {
+    width: 30%;
+}
+
+.main__navbarButtons {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__image {
+    width: 100vw;
+    height: 93vh;
+    background-image: linear-gradient(to bottom, rgba(179, 77, 10, 0.6), rgba(179, 77, 10, 0.6)), url("/assets/maincover.jpg");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__imageText {
+    width: 30vw;
+    text-align: center;
+}
+
+.main__imageText > h1 {
+    color: #f1f2f3;
+    font-size: 44px;
+    font-weight: 900;
+    text-align: left;
+}
+
+.main__imageText > h3 {
+    color: #f1f2f3;
+    text-align: left;
+}
+
+.main__imageFiller {
+    width: 10%;
+}
+
+.main__imageForm {
+    width: 30vw;
+    height: 60vh;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__imageFormSteps {
+    background-color: #9fa2a8;
+    padding: 20px;
+    border-radius: 30px;
+}
+
+.main__navbar > button {
+    max-height: 100px;
+}
+
+@media screen and (max-width: 1390px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: flex;
+        min-height: 93vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 30vw;
+    }
+
+    .main__imageForm {
+        height: 80vh;
+    }
+}
+
+@media screen and (min-width: 1391px) {
+    .main__navbarMobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: flex;
+        min-height: 93vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 30vw;
+    }
+
+    .main__imageForm {
+        height: 80vh;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    .main__navbarButtons {
+        display: none;
+    }
+    
+    .main__navbarAuth {
+        display: none;
+    }
+
+    .main__navbarFiller {
+        width: 70%;
+    }
+
+    .main__image {
+        display: grid;
+        min-height: 100vh;
+        height: auto;
+    }
+    
+    .main__imageText {
+        text-align: left;
+        width: 60vw;
+    }
+
+    .main__imageForm {
+        height: 120vh;
+        width: 60vw;
+    }
+}

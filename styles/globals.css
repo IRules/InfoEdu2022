@@ -23,3 +23,12 @@ a {
 a:link {
   text-decoration: none;
 }
+
+:root{
+  --color-fg: #fff;
+  --color-bg: #282b30;
+  --color1: #ff7f01;
+  --color2: #0082a5;
+  --color3: #ffa901;
+  --color4: #fbc200;
+}

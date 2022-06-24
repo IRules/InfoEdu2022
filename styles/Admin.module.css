@@ -1,0 +1,72 @@
+.admin {
+    background-color: aqua;
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;     
+}
+
+.admin__cardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.admin__card {
+    width: 450px;
+    height: 300px;
+    border-radius: 30px;
+    background-color: aliceblue;
+    display: grid;
+    justify-content: center;
+    align-items: center; 
+}
+
+.admin__cardUniversity {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    align-self: baseline;
+    height: 90px;
+    gap: 20px
+}
+
+.admin__cardUniversityInfo {
+    display: grid;
+    gap: 5px
+}
+
+.admin__cardUniversityFiller {
+    width: 90px;
+}
+
+.admin__cardStatistics {
+    height: 180px;
+}
+
+.admin__cardStatisticsClicks {
+    width: 120px;
+}
+
+.admin__cardStatisticsClicksName {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.admin__cardStatisticsClicksNumber {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    border: 10px solid #34b53a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
