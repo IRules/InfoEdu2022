@@ -5,7 +5,7 @@ import '../styles/globals.css';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#F06539',
+      main: '#ffffff',
       grey: {
         900: '#FFFFFF',
         secondary: '#FFFFFF',
@@ -13,7 +13,7 @@ const theme = createTheme({
       disabled: '#FFFFFF',
     },
     secondary: {
-      main: '#101113',
+      main: '#ffffff',
     },
   },
 });
