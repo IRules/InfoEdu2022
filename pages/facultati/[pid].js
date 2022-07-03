@@ -36,7 +36,7 @@ const Facultate = () => {
         setName(facultate.data().name);
         setRating(facultate.data().rating);
         setDesc(facultate.data().desc);
-      }, 500);
+      }, 10);
     }
   }, [facultate]);
 
