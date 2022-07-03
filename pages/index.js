@@ -9,24 +9,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Fade } from 'react-awesome-reveal';
 
+import Navbar from '../components/Navbar';
 
 function Landing() {
-
-  // Script media
-
-  const [st, setSt] = useState('0px');
-
-  const phoneMenu__hide = () => {
-    setSt('0px');
-  };
-
-  const phoneMenu__show = () => {
-    setSt('200px');
-  };
-
   // Navbar sticky relativ cu scroll
 
-  const [navbar, setNavbar] = useState(false)
+  const [navbar__index__style, setNavbarstyle] = useState(false)
 
   React.useEffect(() => {
     window.addEventListener('scroll', changeNavbarStyle);
@@ -34,9 +22,9 @@ function Landing() {
 
   const changeNavbarStyle = () => {
      if(window.scrollY > 0) {
-      setNavbar(true);
+      setNavbarstyle(true);
      } else {
-      setNavbar(false);
+      setNavbarstyle(false);
      }
   }
 
@@ -46,46 +34,7 @@ function Landing() {
     <div className={styles.landing}>
       {/*------------header+prima pag-------------------*/}
       <section className={styles.headerh}>
-        <nav className={navbar ? `${styles["nav"]} ${styles["nav__change__style"]}` : styles.nav}>
-          <a href="/">
-            <img src="/assets/logo.png"  className={styles.img} style=
-            {{width: 130 }}/>
-          </a>
-          <div
-            className={styles.nav_links}
-            id="navlinks"
-            style={{ marginRight: st }}
-          >
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={styles.fa}
-              onClick={phoneMenu__hide}
-            />
-            <ul className={styles.ul}>
-              <li className={styles.li}>
-                <Link href="/">Acasă</Link>
-              </li>
-              <div className={styles.vertical__line} />
-              <li className={styles.li}>
-                <Link href="/about">Despre</Link>
-              </li>
-              <div className={styles.vertical__line} />
-              <li className={styles.li}>
-                <Link href="/contact">Contact</Link>
-              </li>
-              <div className={styles.vertical__line} />
-              <li className={styles.li}> 
-                <Link href="/dash">Login</Link>
-              </li>
-            </ul>
-          </div>
-          <FontAwesomeIcon
-            icon={faBars}
-            className={styles.fa}
-            onClick={phoneMenu__show}
-          />
-        </nav>
-  
+        <Navbar navstyle={navbar__index__style}/>
         <div className={styles.text_box}>
           <h1 className={styles.h1}>Primul pas spre viitorul tău</h1>
           <img src="/assets/academichat.png" className={styles.academic__hat}/>

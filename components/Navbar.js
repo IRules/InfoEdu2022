@@ -14,13 +14,16 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import styles from '../styles/Navbar.module.css';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
 import Link from 'next/link';
-import MenuIcon from '@mui/icons-material/Menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { auth } from '../lib/firebase';
 
-function Navbar() {
+function Navbar(props) {
+  // Menu
+
   const [anchorMenu, setAnchorMenu] = React.useState(null);
   const open = Boolean(anchorMenu);
   const handleMenu = (event) => {
@@ -30,122 +33,140 @@ function Navbar() {
     setAnchorMenu(null);
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+
+  // Script media
+
+  const [st, setSt] = useState('0px');
+
+  const phoneMenu__hide = () => {
+    setSt('0px');
   };
 
-  const Search = styled('div')(({ theme }) => ({
-    position: 'fixed',
-    borderRadius: theme.shape.borderRadius * 2,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
-
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: '#f1f2f3',
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: '#f1f2f3',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '30ch',
-        '&:focus': {
-          width: '80ch',
-        },
-      },
-    },
-  }));
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open2 = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  const phoneMenu__show = () => {
+    setSt('200px');
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+
 
   return (
-    <div className={styles.navbar}>
-      <div className={styles.navbar__logo}>
-        <Avatar />
-      </div>
-      <div className={styles.navbar__filler}></div>
-      <div className={styles.navbar__mobile}>
-        <IconButton onClick={handleClick}>
-          <MenuIcon color="primary" fontSize="large" />
-        </IconButton>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open2}
-          onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
-          <MenuItem onClick={handleClose}>s</MenuItem>
-          <MenuItem onClick={handleClose}>Ghid Facultate</MenuItem>
-          <MenuItem onClick={handleClose}>Despre noi</MenuItem>
-          <MenuItem onClick={handleClose}>Knowledgebase</MenuItem>
-          <Divider />
-          <MenuItem onClick={handleClose}>Register</MenuItem>
-          <MenuItem onClick={handleClose}>Log in</MenuItem>
-        </Menu>
-      </div>
-      <div className={styles.navbar__search}>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search..."
-            onChange={(e) => handleSearch(e)}
+    <nav className={props.navstyle ? `${styles["nav"]} ${styles["nav__change__style"]}` : styles.nav}>
+          <a href="/">
+            <img src="/assets/logo.png"  className={styles.img} style=
+            {{width: 130 }}/>
+          </a>
+          <div
+            className={styles.nav_links}
+            id="navlinks"
+            style={{ marginRight: st }}
+          >
+            <FontAwesomeIcon
+              icon={faTimes}
+              className={styles.fa}
+              onClick={phoneMenu__hide}
+            />
+            <ul className={styles.ul}>
+              <IconButton onClick={handleMenu} className={styles.avatar__phone}>
+              <Avatar  color="primary" />
+              </IconButton>
+              <li className={styles.li}>
+                <Link href="/">Acasă</Link>
+              </li>
+              <div className={styles.vertical__line} />
+              <li className={styles.li}>
+                <Link href="/about">Despre</Link>
+              </li>
+              <div className={styles.vertical__line} />
+              <li className={styles.li}>
+                <Link href="/contact">Contact</Link>
+              </li>
+              <div className={styles.vertical__line} />
+              <li className={styles.li}> 
+                <Link href="/dash">Login</Link>
+              </li>
+              
+              <IconButton onClick={handleMenu} className={styles.avatar__pc}>
+              <Avatar  color="primary" />
+              </IconButton>
+              <Menu
+              id="basic-menu"
+              anchorEl={anchorMenu}
+              open={open}
+              onClose={handleCloseMenu}
+              MenuListProps={{'aria-labelledby': 'basic-button',}}>
+              <MenuItem>
+                 <Link href="/settings">Settings</Link>
+              </MenuItem>
+              <Divider />
+              <MenuItem>Logout</MenuItem>
+              </Menu>
+            </ul>
+          </div>
+
+          <FontAwesomeIcon
+            icon={faBars}
+            className={styles.fa}
+            onClick={phoneMenu__show}
           />
-        </Search>
-      </div>
-      <div className={styles.navbar__settings}>
-        <IconButton onClick={handleMenu}>
-          <Avatar sx={{ fontSize: 30 }} color="primary" />
-        </IconButton>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorMenu}
-          open={open}
-          onClose={handleCloseMenu}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-          }}
-        >
-          <MenuItem>
-            <Link href="/settings">Settings</Link>
-          </MenuItem>
-          <Divider />
-          <MenuItem>Logout</MenuItem>
-        </Menu>
-      </div>
-      <div className={styles.navbar__searchMobile}></div>
-    </div>
+        </nav>
+    // <div className={styles.navbar}>
+    //   <div className={styles.navbar__logo}>
+    //     <Avatar />
+    //   </div>
+    //   <div className={styles.navbar__filler}></div>
+    //   <div className={styles.navbar__mobile}>
+    //     <IconButton onClick={handleClick}>
+    //       <MenuIcon color="primary" fontSize="large" />
+    //     </IconButton>
+    //     <Menu
+    //       id="basic-menu"
+    //       anchorEl={anchorEl}
+    //       open={open2}
+    //       onClose={handleClose}
+    //       MenuListProps={{
+    //         'aria-labelledby': 'basic-button',
+    //       }}
+    //     >
+    //       <MenuItem onClick={handleClose}>s</MenuItem>
+    //       <MenuItem onClick={handleClose}>Ghid Facultate</MenuItem>
+    //       <MenuItem onClick={handleClose}>Despre noi</MenuItem>
+    //       <MenuItem onClick={handleClose}>Knowledgebase</MenuItem>
+    //       <Divider />
+    //       <MenuItem onClick={handleClose}>Register</MenuItem>
+    //       <MenuItem onClick={handleClose}>Log in</MenuItem>
+    //     </Menu>
+    //   </div>
+    //   <div className={styles.navbar__search}>
+    //     <Search>
+    //       <SearchIconWrapper>
+    //         <SearchIcon />
+    //       </SearchIconWrapper>
+    //       <StyledInputBase
+    //         placeholder="Search..."
+    //         onChange={(e) => handleSearch(e)}
+    //       />
+    //     </Search>
+    //   </div>
+    //   <div className={styles.navbar__settings}>
+    //     <IconButton onClick={handleMenu}>
+    //       <Avatar sx={{ fontSize: 30 }} color="primary" />
+    //     </IconButton>
+    //     <Menu
+    //       id="basic-menu"
+    //       anchorEl={anchorMenu}
+    //       open={open}
+    //       onClose={handleCloseMenu}
+    //       MenuListProps={{
+    //         'aria-labelledby': 'basic-button',
+    //       }}
+    //     >
+    //       <MenuItem>
+    //         <Link href="/settings">Settings</Link>
+    //       </MenuItem>
+    //       <Divider />
+    //       <MenuItem>Logout</MenuItem>
+    //     </Menu>
+    //   </div>
+    //   <div className={styles.navbar__searchMobile}></div>
+    // </div>
   );
 }
 

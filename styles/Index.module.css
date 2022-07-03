@@ -30,70 +30,12 @@
   background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(/assets/contact.jpg);
 }
 
-.li{
- margin-top: 15px;
-}
-
-.nav {
-  z-index: 999999;
-  width: 100%;
-  display: flex;
-  padding: 2% 6%;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  transition: 0.4s;
-}
-
-.nav__change__style{
-  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.6);
-  padding-top: 5px;
-  padding-bottom: 12px;
-  position: fixed;
-  background-color: var(--color-bg);
-  transition: 0.6s
-}
-
-.nav_links{
-  align-self: right;
-  padding-top: ;
-  flex: 1;
-  text-align: right;
-}
-
-.nav_links .ul .li{
-  list-style: none;
+.vertical__line{
+  border-left: 1px solid white;
+  height: 15px;
   display: inline-block;
-  padding: 8px 12px;
-  position: relative;
-
-}
-
-.nav_links .ul .li a{
-  color: var(--color-fg);
-  text-decoration: none;
-  font-size: 15px;
-}
-
-.nav_links .ul .li a:hover{
- color: var(--color2);
- transition: 0.5s;
-
-}
-
-.nav_links .ul .li::after{
-  content: '';
-  width: 0%;
-  height: 2px;
-  background: var(--color1);
-  display: block;
-  margin: auto;
-  transition: 0.5s;
-}
-
-.nav_links .ul .li:hover::after{
-  width: 100%;
-}
+  align: center;
+} 
 
 .text_box{
   width: 90%;
@@ -105,12 +47,6 @@
   text-align: center;
 }
 
-.vertical__line{
-  border-left: 1px solid white;
-  height: 15px;
-  display: inline-block;
-  align: center;
-}
 
 
 /* --------------prima pag welcome cover------------- */
@@ -382,7 +318,7 @@
 }
 
 
-@media(max-width: 700px){
+@media(max-width: 875px){
     /* --hamburger meniu */
     .fa{
       display: block;
