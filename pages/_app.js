@@ -18,6 +18,7 @@ function MyApp({ Component, pageProps }) {
     <FpjsProvider
       loadOptions={{
         apiKey: 'OuLlP8IbQByBH1aHzwet',
+        endpoint: 'https://verifier.tomaind.com',
         region: 'eu',
       }}
     >
