@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from '../styles/ChatMessage.module.css';
 
-function ChatMessage() {
+function ChatMessage(props) {
   return (
     <div className={styles.chatMessage}>
-      {/* <div className={styles.chatMessage__triangle} /> */}
       <span data-testid="tail-in" data-icon="tail-in">
         <svg viewBox="0 0 8 13" width="8" height="13">
           <path
@@ -19,11 +18,8 @@ function ChatMessage() {
         </svg>
       </span>
       <div className={styles.chatMessage__bubble}>
-        <div className={styles.chatMessage__bubbleTitle}>Aris Toma</div>
-        In vulputate nisl ac neque vehicula laoreet. Sed nibh lacus, ultricies
-        et odio a, faucibus rhoncus massa. Pellentesque sed nibh in ex gravida
-        mattis ut quis tellus. Quisque libero eros, pharetra et mauris eget,
-        pellentesque blandit sem.
+        <div className={styles.chatMessage__bubbleTitle}>{props.name}</div>
+        {props.text}
       </div>
     </div>
   );

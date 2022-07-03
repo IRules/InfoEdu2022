@@ -1,3 +1,4 @@
+import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 import { createTheme, Fade, ThemeProvider } from '@mui/material';
 import '../styles/globals.css';
 
@@ -14,9 +15,16 @@ const theme = createTheme({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <FpjsProvider
+      loadOptions={{
+        apiKey: 'OuLlP8IbQByBH1aHzwet',
+        region: 'eu',
+      }}
+    >
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </FpjsProvider>
   );
 }
 

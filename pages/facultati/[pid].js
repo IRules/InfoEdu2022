@@ -1,5 +1,12 @@
 import { Avatar, Button, Rating, TextField } from '@mui/material';
-import { collection, doc, getDoc, query } from 'firebase/firestore';
+import {
+  collection,
+  doc,
+  getDoc,
+  limit,
+  orderBy,
+  query,
+} from 'firebase/firestore';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useCollectionData, useDocument } from 'react-firebase-hooks/firestore';
@@ -12,11 +19,19 @@ const Facultate = () => {
   const router = useRouter();
   const { pid } = router.query;
 
-  const [reviews] = useCollectionData(
-    query(collection(firestore, 'facultati'))
+  const [reviews, loading, error] = useCollectionData(
+    query(collection(firestore, 'facultati', `${pid}`, 'reviews'))
   );
 
-  const [chat] = useCollectionData(query(collection(firestore, 'facultati')));
+  console.log(error);
+
+  const [chat] = useCollectionData(
+    query(
+      collection(firestore, 'facultati', `${pid}`, 'chat'),
+      orderBy('createdAt'),
+      limit(25)
+    )
+  );
 
   const [facultate] = useDocument(doc(firestore, 'facultati', `${pid}`));
 
@@ -68,10 +83,15 @@ const Facultate = () => {
         </div>
         <div className={styles.facultate__infoReviews}>
           <div className={styles.facultate__infoReviewsContainer}>
-            <Review />
-            <Review />
-            <Review />
-            <Review />
+            {reviews &&
+              reviews.map((rev) => (
+                <Review
+                  key={rev.id}
+                  name={rev.name}
+                  rating={rev.rating}
+                  text={rev.text}
+                />
+              ))}
           </div>
           <div className={styles.facultate__infoReviewsSubmit}>
             <TextField
@@ -80,7 +100,6 @@ const Facultate = () => {
               color="secondary"
               multiline
               rows={5}
-              maxRows={5}
             />
             <div className={styles.facultate__infoReviewsSubmitButton}>
               <Rating name="half-rating" defaultValue={0.5} precision={0.5} />
@@ -92,10 +111,10 @@ const Facultate = () => {
       <div className={styles.facultate__bottom}>
         <div className={styles.facultate__bottomChat}>
           <div className={styles.facultate__bottomChatTexts}>
-            <ChatMessage />
-            <ChatMessage />
-            <ChatMessage />
-            <ChatMessage />
+            {chat &&
+              chat.map((mes) => (
+                <ChatMessage key={mes.id} name={mes.name} text={mes.msg} />
+              ))}
           </div>
           <div className={styles.facultate__bottomChatInput}>
             <TextField
@@ -104,7 +123,6 @@ const Facultate = () => {
               color="secondary"
               multiline
               rows={2}
-              maxRows={2}
             />
             <div className={styles.facultate__bottomChatInputButton}>
               <Button variant="contained">Trimite mesaj</Button>
