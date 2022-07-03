@@ -10,7 +10,10 @@ export default async function handler(req, res) {
     const { uid } = req.body;
     const { createdAt } = req.body;
     const { slug } = req.body;
-    if (user.uid === uid) {
+    if (
+      user.uid === uid &&
+      !(await db.collection('users').doc(uid).get()).data().banned
+    ) {
       if (filter.isProfane(message)) {
         res.status(400).json({
           message: 'Profanity detected',

@@ -30,11 +30,13 @@ const Facultate = () => {
   const { pid } = router.query;
 
   const [message, setMessage] = useState('');
+  const [reviewText, setReviewText] = useState('');
+  const [reviewRating, setReviewRating] = useState(0.1);
 
   const [reviews] = useCollectionData(
     query(
       collection(firestore, 'facultati', `${pid}`, 'reviews'),
-      orderBy('rating')
+      orderBy('rating', 'desc')
     )
   );
 
@@ -47,11 +49,19 @@ const Facultate = () => {
       slug: pid,
     });
     setMessage('');
-    setTimeout(() => {
-      dummy.current.scrollIntoView({ behavior: 'smooth' });
-    }, 150);
   };
 
+  const handleSendReview = async (e) => {
+    e.preventDefault();
+    axios.post('/api/sendReview', {
+      uid: auth.currentUser.uid,
+      review: reviewText,
+      rating: reviewRating,
+      createdAt: new Date(),
+      slug: pid,
+    });
+    setRating(0);
+  };
   const [chat] = useCollectionData(
     query(
       collection(firestore, 'facultati', `${pid}`, 'chat'),
@@ -115,6 +125,9 @@ const Facultate = () => {
                   name={rev.name}
                   rating={rev.rating}
                   text={rev.text}
+                  slug={pid}
+                  uid={rev.uid}
+                  createdAt={rev.createdAt}
                 />
               ))}
           </div>
@@ -125,11 +138,20 @@ const Facultate = () => {
               color="secondary"
               multiline
               rows={5}
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
             />
             <div className={styles.facultate__infoReviewsSubmitButton}>
-              <Rating name="half-rating" defaultValue={0.5} precision={0.5} />
+              <Rating
+                name="half-rating"
+                defaultValue={reviewRating}
+                precision={0.1}
+                onChange={(e) => setReviewRating(e.target.value)}
+              />
               &#160;&#160;&#160;&#160;
-              <Button variant="contained">Submit Review</Button>
+              <Button variant="contained" onClick={handleSendReview}>
+                Submit Review
+              </Button>
             </div>
           </div>
         </div>
@@ -139,7 +161,14 @@ const Facultate = () => {
           <div className={styles.facultate__bottomChatTexts}>
             {chat &&
               chat.map((mes) => (
-                <ChatMessage key={mes.id} name={mes.name} text={mes.msg} />
+                <ChatMessage
+                  key={mes.id}
+                  name={mes.name}
+                  text={mes.msg}
+                  createdAt={mes.createdAt}
+                  slug={pid}
+                  uid={mes.uid}
+                />
               ))}
             <div ref={dummy}></div>
           </div>

@@ -32,7 +32,16 @@ function ChatMessage(props) {
   }, [user]);
 
   const deleteMessage = () => {
-    axios.post(`/api/chat/deleteMessage/${props.message.id}`, {});
+    axios.post(`/api/admin/deleteMessage`, {
+      createdAt: props.createdAt,
+      slug: props.slug,
+    });
+  };
+
+  const banUser = () => {
+    axios.post(`/api/admin/banUser`, {
+      user: props.uid,
+    });
   };
 
   return (
@@ -69,9 +78,8 @@ function ChatMessage(props) {
               'aria-labelledby': 'basic-button',
             }}
           >
-            <MenuItem onClick={handleClose}>Baneaza utilizatorul</MenuItem>
-            <MenuItem onClick={handleClose}>Sterge mesajul</MenuItem>
-            <MenuItem onClick={handleClose}>{props.key}</MenuItem>
+            <MenuItem onClick={banUser}>Baneaza utilizatorul</MenuItem>
+            <MenuItem onClick={deleteMessage}>Sterge mesajul</MenuItem>
           </Menu>
         </div>
         {props.text}
