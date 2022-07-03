@@ -1,6 +1,7 @@
 import { Avatar, Button, Rating, TextField } from '@mui/material';
 import { collection, doc, getDoc, query } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useCollectionData, useDocument } from 'react-firebase-hooks/firestore';
 import ChatMessage from '../../components/ChatMessage';
 import Review from '../../components/Review';
@@ -21,33 +22,49 @@ const Facultate = () => {
 
   console.log(facultate);
 
+  const [cover, setCover] = useState('');
+  const [emblem, setEmblem] = useState('');
+  const [name, setName] = useState('');
+  const [rating, setRating] = useState(0);
+  const [desc, setDesc] = useState('');
+
+  useEffect(() => {
+    if (facultate) {
+      setTimeout(() => {
+        setCover(facultate.data().cover);
+        setEmblem(facultate.data().emblem);
+        setName(facultate.data().name);
+        setRating(facultate.data().rating);
+        setDesc(facultate.data().desc);
+      }, 500);
+    }
+  }, [facultate]);
+
   return (
     <div className={styles.facultate}>
       <div
         className={styles.facultate__image}
-        style={{ backgroundImage: `url("${facultate.data().cover}")` }}
+        style={{ backgroundImage: `url("${cover}")` }}
       ></div>
       <div className={styles.facultate__info}>
         <div className={styles.facultate__infoDescription}>
           <div className={styles.facultate__infoDescriptionTitle}>
             <Avatar
               variant="rounded"
-              src={facultate.data().emblem}
+              src={emblem}
               sx={{ width: 68, height: 68 }}
             ></Avatar>
             <div className={styles.facultate__infoDescriptionTitleText}>
-              {facultate.data().name}
+              {name}
               <Rating
                 name="read-only"
-                value={facultate.data().rating}
+                value={rating}
                 precision={0.1}
                 readOnly
               />
             </div>
           </div>
-          <p className={styles.facultate__infoDescriptionText}>
-            {facultate.data().desc}
-          </p>
+          <p className={styles.facultate__infoDescriptionText}>{desc}</p>
         </div>
         <div className={styles.facultate__infoReviews}>
           <div className={styles.facultate__infoReviewsContainer}>
