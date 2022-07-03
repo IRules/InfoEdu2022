@@ -6,7 +6,7 @@ import { auth } from '../../lib/firebase';
 import styles from '../../styles/Admin.module.css';
 
 function Admin() {
-  signInWithEmailAndPassword(auth, 'irulesmain@gmail.com', '12345678');
+  auth.signOut();
   return (
     <div className={styles.admin}>
       <div className={styles.admin__cardContainer}>

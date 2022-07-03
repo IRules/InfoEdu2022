@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../../styles/Settings.module.css';
 import { Fade } from 'react-awesome-reveal';
 import {
@@ -24,8 +24,12 @@ import { Virtuoso } from 'react-virtuoso';
 import Profession from '../../components/Profession';
 import HomeIcon from '@mui/icons-material/Home';
 import SaveIcon from '@mui/icons-material/Save';
+import { auth } from '../../lib/firebase';
+import Router from 'next/router';
+import Navbar from '../../components/Navbar';
 
 function settings() {
+  const user = auth.currentUser;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [budget, setBudget] = useState('');
 
@@ -46,21 +50,16 @@ function settings() {
   const handleBac = (event) => {
     setBac(event.target.value);
   };
+  useEffect(() => {
+    setTimeout(() => {
+      if (auth.currentUser == null) {
+        Router.push('/account/auth');
+      }
+    }, 200);
+  }, [user]);
   return (
     <Fade>
-      <div className={styles.settings__navbar}>
-        <div className={styles.settings__navbarBack}>
-          <Button color="secondary">
-            <HomeIcon /> Acasa
-          </Button>
-        </div>
-        <div className={styles.settings__navbarFiller}></div>
-        <div className={styles.settings__navbarSave}>
-          <Button color="secondary">
-            <SaveIcon /> Salveaza Setari
-          </Button>
-        </div>
-      </div>
+      <Navbar />
       <div className={styles.settings}>
         <div className={styles.settings__container}>
           <div className={styles.settings__containerAccount}>

@@ -33,3 +33,21 @@ a:link {
   --color4: #3ef1fc;
   --color5: #4ec9ff;
 }
+
+* {
+  scrollbar-width: 8px;
+  scrollbar-color: #ff5404 #1d1f22;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1d1f22;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff5404;
+  border-radius: 10px;
+  border: 3px none #ffffff;
+}

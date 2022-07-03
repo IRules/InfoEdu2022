@@ -9,6 +9,9 @@ import styles from '../../styles/Auth.module.css';
 import { Box } from '@mui/system';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LoginIcon from '@mui/icons-material/Login';
+import axios from 'axios';
+import { auth } from '../../lib/firebase';
+import Router from 'next/router';
 
 function Login() {
   const [error, setError] = useState('');
@@ -19,18 +22,24 @@ function Login() {
   const signIn = (e) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password);
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        Router.push('/facultati');
+      })
+      .catch((error) => setError(error.message));
   };
 
   return (
     <div className={styles.login}>
       <div className={styles.login__space}>
-        {error ? <Alert severity="error">{error}</Alert> : ''}
         <div className={styles.login__spaceForm}>
+          {error ? <Alert severity="error">{error}</Alert> : ''}
+          <br></br>
           <h1 className={styles.login__spaceFormTitle}>Bun venit! Logare:</h1>
           <h4 className={styles.login__spaceFormSecondTitle}>
             Va rugam sa va logati inainte de a continua
           </h4>
+          <br></br>
           <input
             className={styles.login__spaceFormUsername}
             type="text"
@@ -50,7 +59,7 @@ function Login() {
           />
           <br />
           <Button variant="contained" onClick={signIn}>
-            Continua
+            Continuati
           </Button>
         </div>
       </div>
@@ -64,29 +73,50 @@ function Login() {
 function SignUp() {
   const [error, setError] = useState('');
 
-  const [nume, setNume] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const signUp = (e) => {
     e.preventDefault();
-
-    createUserWithEmailAndPassword(auth, email, password).catch((error) =>
-      setError(error.message)
-    );
+    if (name.length < 3) {
+      setError('Numele trebuie sa contina minim 3 caractere');
+    } else if (email.length < 3) {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          axios.post('/api/account/createUser', {
+            name: name,
+            email: email,
+            password: password,
+          });
+          Router.push('/facultati');
+        })
+        .catch((error) => setError(error.message));
+    }
   };
 
   return (
     <div className={styles.login}>
       <div className={styles.login__space}>
-        {error ? <Alert severity="error">{error}</Alert> : ''}
         <div className={styles.login__spaceForm}>
+          {error ? <Alert severity="error">{error}</Alert> : ''}
+          <br></br>
           <h1 className={styles.login__spaceFormTitle}>
             Bun venit! Inregistrare:
           </h1>
           <h4 className={styles.login__spaceFormSecondTitle}>
             Va rugam sa va inregistrati inainte de a continua
           </h4>
+          <br></br>
+          <input
+            className={styles.login__spaceFormUsername}
+            type="text"
+            name="Nume"
+            placeholder="Username..."
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
           <input
             className={styles.login__spaceFormUsername}
             type="text"
