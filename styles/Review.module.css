@@ -1,0 +1,15 @@
+.review {
+    height: 100%;
+    padding: 20px;
+}
+
+.review__title {
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    gap: 20px
+}
+
+.review__text {
+    padding: 10px;
+}

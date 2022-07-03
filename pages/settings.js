@@ -79,7 +79,8 @@ function settings() {
             </div>
             <div className={styles.settings__containerAccountInfo}>
               <Alert severity="info" sx={{ ml: '20px' }}>
-                Aceste date sunt utilizte pentru recomandari.
+                Aceste date sunt utilizte pentru sectiunea de comentarii si cea
+                de chat.
               </Alert>
             </div>
           </div>

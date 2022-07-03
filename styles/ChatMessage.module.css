@@ -1,0 +1,25 @@
+.chatMessage {
+    padding: 10px;
+    width: 90%;
+    display: flex;
+}
+
+.chatMessage__triangle {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 0px solid transparent;
+    
+    border-top: 20px solid #9fa2a8; 
+}
+
+.chatMessage__bubble {
+    padding: 5px;
+    background-color: #9fa2a8;
+    border-radius: 0px 10px 10px 10px;
+}
+
+.chatMessage__bubbleTitle {
+    font-weight: bold;
+    font-size: 16px;
+}
