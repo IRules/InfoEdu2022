@@ -1,5 +1,162 @@
 .facultate {
-    width: 100vw;
-    height: 100vh;
     background-color: #0a0b0c;
+    display: grid;
+    padding: 20px;
+    justify-content: center;
+    gap: 20px;
+}
+
+.facultate__image {
+    width: 90vw;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+}
+
+.facultate__info {
+    width: 90vw;
+    height: 70vh;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.facultate__infoDescription {
+    width: 45vw;
+    height: 70vh;
+    background-color: #f1f2f3;
+    border-radius: 20px 0px 0px 20px;
+    overflow: auto;
+}
+
+.facultate__infoReviews {
+    width: 45vw;
+    height: 70vh;
+    background-color: #f1f2f3;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.facultate__bottom {
+    width: 90vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.facultate__bottomChat {
+    width: 44vw;
+    height: 50vh;
+    background-color: #f1f2f3;
+    border-radius: 20px;
+}
+
+.facultate__bottomInfo {
+    width: 44vw;
+    height: 50vh;
+    background-color: #f1f2f3;
+    border-radius: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .facultate__info {
+        width: 90vw;
+        height: 100%;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: auto;
+        gap: 20px;
+    }
+    
+    .facultate__infoDescription {
+        width: 90vw;
+        height: 70vh;
+        border-radius: 20px;
+    }
+    
+    .facultate__infoReviews {
+        width: 90vw;
+        height: 100vh;
+        border-radius: 20px;
+    }
+    
+    .facultate__bottom {
+        width: 90vw;
+        height: 100%;
+        display: grid;
+        justify-content: center;
+        gap: 2vw;
+    }
+    
+    .facultate__bottomChat {
+        width: 90vw;
+        height: 50vh;
+        border-radius: 20px;
+    }
+    
+    .facultate__bottomInfo {
+        width: 90vw;
+        height: 50vh;
+        border-radius: 20px;
+    }
+}
+
+.facultate__infoDescriptionTitle {
+    height: 100px;
+    display: flex;
+    align-items: center ;
+    padding: 20px;
+}
+
+.facultate__infoDescriptionTitleText {
+    padding: 10px;
+    font-size: larger;
+    font-weight: bold;
+    display: grid;
+    gap: 5px;
+}
+
+.facultate__infoDescriptionText {
+    padding: 20px;
+    overflow: auto;
+}
+
+.facultate__infoReviewsContainer {
+    overflow: auto;
+    height: 65%;
+    display: grid;
+}
+
+.facultate__infoReviewsSubmit {
+    padding: 20px;
+}
+
+.facultate__infoReviewsSubmitButton {
+    padding: 10px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.facultate__bottomChat {
+    padding: 20px;
+}
+
+.facultate__bottomChatTexts {
+    height: 70%;
+    overflow: auto;
+}
+
+.facultate__bottomChatInput {
+    display: grid;
+    align-items: center;
+    padding: 10px;
+}
+
+.facultate__bottomChatInputButton {
+    padding: 10px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
 }

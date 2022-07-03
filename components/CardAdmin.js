@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material';
+import { Avatar, Rating } from '@mui/material';
 import React from 'react';
 import styles from '../styles/Admin.module.css';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -27,11 +27,39 @@ function CardAdmin() {
       </div>
       <div className={styles.admin__cardStatistics}>
         <div className={styles.admin__cardStatisticsClicks}>
-          <div className={styles.admin__cardStatisticsClicksName}>Clickuri</div>
+          <div className={styles.admin__cardStatisticsClicksName}>Vizite</div>
           <div className={styles.admin__cardStatisticsClicksNumber}>
             <CountUp end={69420} duration={3} />
           </div>
         </div>
+        <div className={styles.admin__cardStatisticsClicks}>
+          <div className={styles.admin__cardStatisticsClicksName}>Recenzie</div>
+          <div className={styles.admin__cardStatisticsClicksNumber2}>
+            <CountUp end={5} duration={3} />
+          </div>
+        </div>
+        <div className={styles.admin__cardStatisticsClicks2}>
+          <div className={styles.admin__cardStatisticsClicksName}>
+            Nr. Recenzii
+          </div>
+          <div className={styles.admin__cardStatisticsClicksNumber3}>
+            <CountUp end={69420} duration={3} />
+          </div>
+        </div>
+        {/* <div className={styles.admin__cardStatisticsRatings}>
+          <div className={styles.admin__cardStatisticsRatingsRate}>
+            Rating: <Rating value={5} readOnly />
+          </div>
+          <div className={styles.admin__cardStatisticsRatingsRate}>
+            Rating: <Rating value={5} readOnly />
+          </div>
+          <div className={styles.admin__cardStatisticsRatingsRate}>
+            Rating: <Rating value={5} readOnly />
+          </div>
+          <div className={styles.admin__cardStatisticsRatingsRate}>
+            Rating: <Rating value={5} readOnly />
+          </div>
+        </div> */}
       </div>
     </div>
   );

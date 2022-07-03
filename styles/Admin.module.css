@@ -8,10 +8,11 @@
 }
 
 .admin__cardContainer {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     gap: 40px;
+    grid-template-columns: auto auto auto;
 }
 
 .admin__card {
@@ -44,10 +45,13 @@
 
 .admin__cardStatistics {
     height: 180px;
+    display: flex;
 }
 
 .admin__cardStatisticsClicks {
     width: 120px;
+    display: grid;
+    justify-content: center;
 }
 
 .admin__cardStatisticsClicksName {
@@ -60,8 +64,8 @@
 }
 
 .admin__cardStatisticsClicksNumber {
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     border: 10px solid #34b53a;
     display: flex;
@@ -69,4 +73,53 @@
     justify-content: center;
     font-weight: bold;
     font-size: 20px;
+}
+
+.admin__cardStatisticsRatings {
+    margin-left: 30px;
+    display: grid;
+    font-size: 18px;
+    gap: 3px;
+}
+
+.admin__cardStatisticsRatingsRate {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+
+.admin__editor {
+    background-color: white;
+    padding: 20px;
+}
+
+.admin__cardStatisticsClicksNumber2 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 10px solid #ffb200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.admin__cardStatisticsClicksNumber3 {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 10px solid #4339f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.admin__cardStatisticsClicks2 {
+    width: 120px;
+    display: grid;
+    justify-content: center;
+    margin-left: 10px;
 }

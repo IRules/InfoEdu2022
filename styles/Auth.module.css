@@ -1,0 +1,177 @@
+@media only screen and (max-width: 600px) {
+  .auth__method {
+      margin-top: -15vh;
+      margin-left: 0vw;
+      width: 100vw;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .auth__method {
+      margin-top: -15vh;
+      width: 100vw;
+      
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .auth__method {
+      margin-top: -15vh;
+      width: 100vw;
+      
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .auth__method {
+      margin-top: -15vh;
+      width: 100vw;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .auth__method {
+      margin-top: -15vh;
+      width: 50vw; 
+  }
+}
+
+@media (max-width: 1000px) {
+    .login {
+        background-color: #36393e;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+    
+    .login__space {
+        background-color: #ff7f01;
+        width: 100vw;
+        height: 100vh; 
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .login__spaceForm {
+        margin-top: 25vh;
+    }
+    
+    .login__spaceFormUsername {
+        color: wheat;
+        font-size: 18px;
+        width: 100%;
+        height: 45px;
+          padding-left: 15px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(255,255,255,.2);
+        width: 70vw;
+      }
+    
+      .login__spaceFormPassword {
+        color: wheat;
+        font-size: 18px;
+        width: 100%;
+        height: 45px;
+          padding-left: 15px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(255,255,255,.2);
+        width: 70vw;
+      }
+    
+    .login__spaceFormTitle {
+        color: white;
+    }
+    
+    .login__spaceFormSecondTitle {
+        color: #fff;
+    }
+    
+    .login__art {
+        display: none;
+      }
+    
+      .login__artImg {
+          display: none;
+      }
+    
+      .login__space {
+          width: 100vw;
+          height: 100vh;
+      }
+  }
+
+  @media (min-width: 1000px) {
+    .login {
+        background-color: #d2d3db;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+    }
+    
+    .login__space {
+        background-color: #ff7f01;
+        width: 48vw;
+        height: 100vh;
+        border-radius: 0px 40px 40px 0px;   
+        display: flex;
+        justify-content: center;
+    
+    }
+    
+    .login__spaceForm {
+        margin-top: 32vh;
+    }
+    
+    .login__spaceFormUsername {
+        color: wheat;
+        font-size: 18px;
+        width: 100%;
+        height: 45px;
+          padding-left: 15px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(255,255,255,.2);
+        width: 20vw;
+      }
+    
+      .login__spaceFormPassword {
+        color: wheat;
+        font-size: 18px;
+        width: 100%;
+        height: 45px;
+          padding-left: 15px;
+          border: none;
+          outline: none;
+          border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(255,255,255,.2);
+        width: 20vw;
+      }
+    
+    .login__spaceFormTitle {
+        color: white;
+    }
+    
+    .login__spaceFormSecondTitle {
+        color: #FFF;
+    }
+    
+    .login__art {
+        width: 52vw;
+        height: 100vh;
+      }
+    
+      .login__artImg {
+          width: 50vw;
+          margin-top: 15vh;
+      }
+}
