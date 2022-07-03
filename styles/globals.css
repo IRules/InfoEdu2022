@@ -27,8 +27,9 @@ a:link {
 :root{
   --color-fg: #fff;
   --color-bg: #282b30;
-  --color1: #ff7f01;
-  --color2: #0082a5;
-  --color3: #ffa901;
-  --color4: #fbc200;
+  --color1: #ff8150;
+  --color2: #ffc139;
+  --color3: #5dffcf;
+  --color4: #3ef1fc;
+  --color5: #4ec9ff;
 }
