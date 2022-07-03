@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { Fade } from 'react-awesome-reveal';
+
 
 function Landing() {
   const [st, setSt] = useState('0px');
@@ -20,6 +22,7 @@ function Landing() {
   };
 
   return (
+    <Fade>
     <div >
       {/*------------header+prima pag-------------------*/}
       <section className={`${styles["headerh"]} ${styles["headera"]}`}>
@@ -77,6 +80,7 @@ function Landing() {
        </div>
       </section>
     </div>
+    </Fade>
   );
 }
 
