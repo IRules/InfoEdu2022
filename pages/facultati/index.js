@@ -19,10 +19,12 @@ export default function Facultati() {
   return (
     <Fade>
       <div className={styles.app}>
-        <Navbar />
         <div className={styles.app__categories}>
           <BottomNavigation
-            sx={{ backgroundColor: '#F06539', height: '5vh' }}
+            sx={{
+              backgroundColor: '#F06539',
+              height: '5vh',
+            }}
             value={value}
             onChange={handleChange}
           >

@@ -12,7 +12,7 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/Navbar.module.css';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../lib/firebase';
+import Router from 'next/router';
 
 function Navbar(props) {
   // Menu
@@ -33,6 +34,11 @@ function Navbar(props) {
     setAnchorMenu(null);
   };
 
+  const signOut = (e) => {
+    auth.signOut();
+    setAnchorMenu(null);
+    setUser(false);
+  };
 
   // Script media
 
@@ -45,80 +51,110 @@ function Navbar(props) {
   const phoneMenu__show = () => {
     setSt('200px');
   };
-  
-  //
 
-  const user = auth.currentUser
+  const [user, setUser] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (auth.currentUser) {
+        setUser(true);
+      }
+      console.log(auth.currentUser);
+    }, 1000);
+  }, [auth.currentUser]);
   return (
-    <nav className={props.navstyle ? `${styles["nav"]} ${styles["nav__change__style"]}` : styles.nav}>
-          <a href="/">
-            <img src="/assets/logo.png"  className={styles.img} style=
-            {{width: 130 }}/>
-          </a>
-          <div
-            className={styles.nav_links}
-            id="navlinks"
-            style={{ marginRight: st }}
-          >
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={styles.fa}
-              onClick={phoneMenu__hide}
-            />
-            <ul className={styles.ul}>
-            {user ? 
-              <>
-              <div className={user ? styles.avatar__phone : styles.display__none}><IconButton onClick={handleMenu}>
-              <Avatar  color="primary" />
-              </IconButton></div>
-              </> : 
-              <></>}
-              <li className={styles.li}>
-                <Link href="/">Acasă</Link>
-              </li>
+    <nav
+      className={
+        props.navstyle
+          ? `${styles['nav']} ${styles['nav__change__style']}`
+          : styles.nav
+      }
+    >
+      <a href="/">
+        <img
+          src="/assets/logo.png"
+          className={styles.img}
+          style={{ width: 130 }}
+        />
+      </a>
+      <div
+        className={styles.nav_links}
+        id="navlinks"
+        style={{ marginRight: st }}
+      >
+        <FontAwesomeIcon
+          icon={faTimes}
+          className={styles.fa}
+          onClick={phoneMenu__hide}
+        />
+        <ul className={styles.ul}>
+          {user ? (
+            <>
+              <div
+                className={user ? styles.avatar__phone : styles.display__none}
+              >
+                <IconButton onClick={handleMenu}>
+                  <Avatar color="primary" />
+                </IconButton>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+          <li className={styles.li}>
+            <Link href="/">Acasă</Link>
+          </li>
+          <div className={styles.vertical__line} />
+          <li className={styles.li}>
+            <Link href="/facultati">Facultati</Link>
+          </li>
+          <div className={styles.vertical__line} />
+          <li className={styles.li}>
+            <Link href="/about">Despre</Link>
+          </li>
+          <div className={styles.vertical__line} />
+          <li className={styles.li}>
+            <Link href="/contact">Contact</Link>
+          </li>
+          {user ? (
+            <>
+              <div className={user ? styles.avatar__pc : styles.display__none}>
+                <IconButton onClick={handleMenu}>
+                  <Avatar color="primary" />
+                </IconButton>
+              </div>
+            </>
+          ) : (
+            <>
               <div className={styles.vertical__line} />
               <li className={styles.li}>
-                <Link href="/about">Despre</Link>
+                <Link href="/account/auth">Login</Link>
               </li>
-              <div className={styles.vertical__line} />
-              <li className={styles.li}>
-                <Link href="/contact">Contact</Link>
-              </li>
-              {user ? 
-              <>
-              <div className={user ? styles.avatar__pc : styles.display__none}><IconButton onClick={handleMenu}>
-              <Avatar  color="primary" />
-              </IconButton></div>
-              </> : 
-              <>
-              <div className={styles.vertical__line} />
-              <li className={styles.li}> 
-                <Link href="/dash">Login</Link>
-              </li></>}
-              
-  
-              <Menu
-              id="basic-menu"
-              anchorEl={anchorMenu}
-              open={open}
-              onClose={handleCloseMenu}
-              MenuListProps={{'aria-labelledby': 'basic-button',}}>
-              <MenuItem>
-                 <Link href="/settings">Settings</Link>
-              </MenuItem>
-              <Divider />
-              <MenuItem>Logout</MenuItem>
-              </Menu>
-            </ul>
-          </div>
+            </>
+          )}
 
-          <FontAwesomeIcon
-            icon={faBars}
-            className={styles.fa}
-            onClick={phoneMenu__show}
-          />
-        </nav>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorMenu}
+            open={open}
+            onClose={handleCloseMenu}
+            MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+          >
+            <MenuItem>
+              <Link href="/account">Account</Link>
+            </MenuItem>
+            <Divider />
+            <MenuItem onClick={signOut}>Logout</MenuItem>
+          </Menu>
+        </ul>
+      </div>
+
+      <FontAwesomeIcon
+        icon={faBars}
+        className={styles.fa}
+        onClick={phoneMenu__show}
+      />
+    </nav>
     // <div className={styles.navbar}>
     //   <div className={styles.navbar__logo}>
     //     <Avatar />

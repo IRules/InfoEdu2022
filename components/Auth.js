@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { Alert, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import styles from '../../styles/Auth.module.css';
+import styles from '../styles/Auth.module.css';
 import { Box } from '@mui/system';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
-import { auth } from '../../lib/firebase';
+import { auth } from '../lib/firebase';
 import Router from 'next/router';
 
 function Login() {
@@ -19,18 +19,12 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signOut = (e) => {
-    auth.signOut();
-  };
-
   const signIn = (e) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        Router.push('/');
-      })
-      .catch((error) => setError(error.message));
+    signInWithEmailAndPassword(auth, email, password).catch((error) =>
+      setError(error.message)
+    );
   };
 
   return (
@@ -82,21 +76,20 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   const signUp = (e) => {
+    e.preventDefault();
     if (name.length < 3) {
       setError('Numele trebuie sa contina minim 3 caractere');
-    } else {
-      axios
-        .post('/api/account/createUser', {
-          username: name,
-          email: email,
-          password: password,
-        })
+    } else if (email.length < 3) {
+      createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
-          Router.push('/account');
+          axios.post('/api/account/createUser', {
+            name: name,
+            email: email,
+            password: password,
+          });
+          Router.push('/facultati');
         })
-        .catch((error) => {
-          setError(error.message);
-        });
+        .catch((error) => setError(error.message));
     }
   };
 
@@ -154,14 +147,6 @@ function SignUp() {
 
 export default function Auth() {
   const [authMethod, setAuthMethod] = React.useState(0);
-
-  useEffect(() => {
-    console.log(auth.currentUser);
-    if (auth.currentUser != null) {
-      Router.push('/account');
-    }
-  }, [auth.currentUser]);
-
   return (
     <>
       {authMethod ? <SignUp /> : <Login />}
