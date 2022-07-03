@@ -1,7 +1,40 @@
-import React from 'react';
+import { IconButton, Menu, MenuItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/ChatMessage.module.css';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { auth } from '../lib/firebase';
+import axios from 'axios';
 
 function ChatMessage(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  const user = auth.currentUser;
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (user) {
+        axios.get(`/api/admin/isAdmin/`).then((res) => {
+          if (res.data.isAdmin) {
+            setIsAdmin(true);
+          }
+        });
+      }
+    }, 100);
+  }, [user]);
+
+  const deleteMessage = () => {
+    axios.post(`/api/chat/deleteMessage/${props.message.id}`, {});
+  };
+
   return (
     <div className={styles.chatMessage}>
       <span data-testid="tail-in" data-icon="tail-in">
@@ -18,7 +51,29 @@ function ChatMessage(props) {
         </svg>
       </span>
       <div className={styles.chatMessage__bubble}>
-        <div className={styles.chatMessage__bubbleTitle}>{props.name}</div>
+        <div className={styles.chatMessage__bubbleTitle}>
+          {props.name}
+          {isAdmin ? (
+            <IconButton onClick={handleClick}>
+              <MoreVertIcon sx={{ fontSize: 15 }} />
+            </IconButton>
+          ) : (
+            <></>
+          )}
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              'aria-labelledby': 'basic-button',
+            }}
+          >
+            <MenuItem onClick={handleClose}>Baneaza utilizatorul</MenuItem>
+            <MenuItem onClick={handleClose}>Sterge mesajul</MenuItem>
+            <MenuItem onClick={handleClose}>{props.key}</MenuItem>
+          </Menu>
+        </div>
         {props.text}
       </div>
     </div>

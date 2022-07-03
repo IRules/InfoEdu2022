@@ -1,4 +1,12 @@
-import { Avatar, Button, Rating, TextField } from '@mui/material';
+import {
+  Avatar,
+  Button,
+  IconButton,
+  Rating,
+  Snackbar,
+  TextField,
+} from '@mui/material';
+import axios from 'axios';
 import {
   collection,
   doc,
@@ -8,34 +16,51 @@ import {
   query,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useCollectionData, useDocument } from 'react-firebase-hooks/firestore';
 import ChatMessage from '../../components/ChatMessage';
 import Review from '../../components/Review';
-import { firestore } from '../../lib/firebase';
+import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/Facultate.module.css';
+import CloseIcon from '@mui/icons-material/Close';
 
 const Facultate = () => {
+  const dummy = useRef();
   const router = useRouter();
   const { pid } = router.query;
 
-  const [reviews, loading, error] = useCollectionData(
-    query(collection(firestore, 'facultati', `${pid}`, 'reviews'))
+  const [message, setMessage] = useState('');
+
+  const [reviews] = useCollectionData(
+    query(
+      collection(firestore, 'facultati', `${pid}`, 'reviews'),
+      orderBy('rating')
+    )
   );
 
-  console.log(error);
+  const handleSendMessage = async (e) => {
+    e.preventDefault();
+    axios.post('/api/sendMessage', {
+      uid: auth.currentUser.uid,
+      message: message,
+      createdAt: new Date(),
+      slug: pid,
+    });
+    setMessage('');
+    setTimeout(() => {
+      dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+  };
 
   const [chat] = useCollectionData(
     query(
       collection(firestore, 'facultati', `${pid}`, 'chat'),
-      orderBy('createdAt'),
+      orderBy('createdAt', 'asc'),
       limit(25)
     )
   );
 
   const [facultate] = useDocument(doc(firestore, 'facultati', `${pid}`));
-
-  console.log(facultate);
 
   const [cover, setCover] = useState('');
   const [emblem, setEmblem] = useState('');
@@ -103,6 +128,7 @@ const Facultate = () => {
             />
             <div className={styles.facultate__infoReviewsSubmitButton}>
               <Rating name="half-rating" defaultValue={0.5} precision={0.5} />
+              &#160;&#160;&#160;&#160;
               <Button variant="contained">Submit Review</Button>
             </div>
           </div>
@@ -115,17 +141,22 @@ const Facultate = () => {
               chat.map((mes) => (
                 <ChatMessage key={mes.id} name={mes.name} text={mes.msg} />
               ))}
+            <div ref={dummy}></div>
           </div>
           <div className={styles.facultate__bottomChatInput}>
             <TextField
               fullWidth
-              label="Scrie un review"
+              label="Chat public"
               color="secondary"
               multiline
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
               rows={2}
             />
             <div className={styles.facultate__bottomChatInputButton}>
-              <Button variant="contained">Trimite mesaj</Button>
+              <Button variant="contained" onClick={(e) => handleSendMessage(e)}>
+                Trimite mesaj
+              </Button>
             </div>
           </div>
         </div>
