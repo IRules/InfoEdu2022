@@ -69,9 +69,9 @@ function Navbar(props) {
               onClick={phoneMenu__hide}
             />
             <ul className={styles.ul}>
-              <IconButton onClick={handleMenu} className={styles.avatar__phone}>
+              <div className={styles.avatar__phone}><IconButton onClick={handleMenu}>
               <Avatar  color="primary" />
-              </IconButton>
+              </IconButton></div>
               <li className={styles.li}>
                 <Link href="/">Acasă</Link>
               </li>
@@ -87,9 +87,10 @@ function Navbar(props) {
               <li className={styles.li}> 
                 <Link href="/dash">Login</Link>
               </li>
-              <IconButton onClick={handleMenu} className={styles.avatar__pc}>
+              
+              <div className={styles.avatar__pc}><IconButton onClick={handleMenu}>
               <Avatar  color="primary" />
-              </IconButton>
+              </IconButton></div>
               <Menu
               id="basic-menu"
               anchorEl={anchorMenu}
