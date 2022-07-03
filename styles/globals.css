@@ -26,7 +26,8 @@ a:link {
 
 :root{
   --color-fg: #fff;
-  --color-bg: #282b30;
+  --color-bg2: #282b30;
+  --color-bg: #1d1f22;
   --color1: #ff8150;
   --color2: #ffc139;
   --color3: #5dffcf;
@@ -36,18 +37,18 @@ a:link {
 
 * {
   scrollbar-width: 8px;
-  scrollbar-color: #ff5404 #1d1f22;
+  scrollbar-color: var(--color1) var(--color-bg2);
 }
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1d1f22;
+  background: var(--color-bg2);
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ff5404;
+  background-color: var(--color1);
   border-radius: 10px;
   border: 3px none #ffffff;
 }

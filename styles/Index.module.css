@@ -46,7 +46,7 @@
 }
 
 .nav__change__style{
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.6);
   padding-top: 5px;
   padding-bottom: 12px;
   position: fixed;
@@ -242,7 +242,7 @@
 }
 
 .column_cont:hover{
- box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.7);
+ box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.9);
  border: 2px solid var(--color2);
 }
 .ghid__below__img{
@@ -273,7 +273,7 @@
 }
 
 .reviewcard:hover{
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.9);
 }
 
 .imgr{
@@ -309,7 +309,7 @@
 }
   
 .citat:hover{
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.9);
 }
 
 .citattext{
