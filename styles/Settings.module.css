@@ -33,6 +33,7 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    margin-top: 130px;
     width: 100vw;
     grid-template-areas:
     'account tests'

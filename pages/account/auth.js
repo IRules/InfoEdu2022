@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import { Alert, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import {
@@ -24,7 +24,7 @@ function Login() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
-        Router.push('/facultati');
+        Router.push('/account');
       })
       .catch((error) => setError(error.message));
   };
@@ -78,20 +78,21 @@ function SignUp() {
   const [password, setPassword] = useState('');
 
   const signUp = (e) => {
-    e.preventDefault();
     if (name.length < 3) {
       setError('Numele trebuie sa contina minim 3 caractere');
-    } else if (email.length < 3) {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          axios.post('/api/account/createUser', {
-            name: name,
-            email: email,
-            password: password,
-          });
-          Router.push('/facultati');
+    } else {
+      axios
+        .post('/api/account/createUser', {
+          username: name,
+          email: email,
+          password: password,
         })
-        .catch((error) => setError(error.message));
+        .then(() => {
+          Router.push('/account');
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
     }
   };
 
@@ -149,6 +150,14 @@ function SignUp() {
 
 export default function Auth() {
   const [authMethod, setAuthMethod] = React.useState(0);
+
+  useEffect(() => {
+    console.log(auth.currentUser);
+    if (auth.currentUser != null) {
+      Router.push('/account');
+    }
+  }, [auth.currentUser]);
+
   return (
     <>
       {authMethod ? <SignUp /> : <Login />}
