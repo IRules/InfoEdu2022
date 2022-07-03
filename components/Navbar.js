@@ -48,9 +48,7 @@ function Navbar(props) {
   
   //
 
-  // const user = auth.currentUser{
-  // user ? <da> : <nu>
-  // }
+  const user = auth.currentUser
 
   return (
     <nav className={props.navstyle ? `${styles["nav"]} ${styles["nav__change__style"]}` : styles.nav}>
@@ -69,9 +67,13 @@ function Navbar(props) {
               onClick={phoneMenu__hide}
             />
             <ul className={styles.ul}>
-              <div className={styles.avatar__phone}><IconButton onClick={handleMenu}>
+            {user ? 
+              <>
+              <div className={user ? styles.avatar__phone : styles.display__none}><IconButton onClick={handleMenu}>
               <Avatar  color="primary" />
               </IconButton></div>
+              </> : 
+              <></>}
               <li className={styles.li}>
                 <Link href="/">Acasă</Link>
               </li>
@@ -83,14 +85,19 @@ function Navbar(props) {
               <li className={styles.li}>
                 <Link href="/contact">Contact</Link>
               </li>
+              {user ? 
+              <>
+              <div className={user ? styles.avatar__pc : styles.display__none}><IconButton onClick={handleMenu}>
+              <Avatar  color="primary" />
+              </IconButton></div>
+              </> : 
+              <>
               <div className={styles.vertical__line} />
               <li className={styles.li}> 
                 <Link href="/dash">Login</Link>
-              </li>
+              </li></>}
               
-              <div className={styles.avatar__pc}><IconButton onClick={handleMenu}>
-              <Avatar  color="primary" />
-              </IconButton></div>
+  
               <Menu
               id="basic-menu"
               anchorEl={anchorMenu}
