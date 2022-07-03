@@ -24,7 +24,6 @@
    
    .nav_links{
      align-self: right;
-     padding-top: ;
      flex: 1;
      text-align: right;
    }
@@ -120,22 +119,17 @@
         padding: 30px;
       }
   
-
-    .navbar__search {
-        display: none;
-    }
-
-    .navbar__filler {
-        width: 40vw;
-    }
-    .vertical__line{
-        display: none;
-    }
-    .avatar__phone{
-        display: block;
-     margin-top: 4%;
-    }
-    .avatar__pc{
-     display: none;
-    }
+      .navbar__filler {
+       width: 40vw;
+      }
+      .vertical__line{
+       display: none;
+      }  
+      .avatar__phone{
+       display: block;
+       margin-top: 4%;
+      }
+      .avatar__pc{
+       display: none;
+      }
 }
