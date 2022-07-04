@@ -73,6 +73,7 @@ export default function Facultati() {
     <Fade>
       <div className={styles.facultati}>
         <Navbar navstyle={true} />
+
         <div className={styles.facultati__lista}>
           <List searchValue={search.current}></List>
         </div>

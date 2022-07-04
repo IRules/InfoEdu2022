@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Avatar,
   Button,
   IconButton,
@@ -25,6 +26,11 @@ import styles from '../../styles/Facultate.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Navbar from '../../components/Navbar';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import Link from 'next/link';
+
+import PlaceIcon from '@mui/icons-material/Place';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 
 const Facultate = () => {
   const dummy = useRef();
@@ -34,6 +40,7 @@ const Facultate = () => {
   const [message, setMessage] = useState('');
   const [reviewText, setReviewText] = useState('');
   const [reviewRating, setReviewRating] = useState(0.1);
+  const [token, setToken] = useState('');
 
   const [reviews] = useCollectionData(
     query(
@@ -45,10 +52,10 @@ const Facultate = () => {
   const handleSendMessage = async (e) => {
     e.preventDefault();
     axios.post('/api/sendMessage', {
-      uid: auth.currentUser.uid,
       message: message,
       createdAt: new Date(),
       slug: pid,
+      token: token,
     });
     setMessage('');
   };
@@ -56,7 +63,7 @@ const Facultate = () => {
   const handleSendReview = async (e) => {
     e.preventDefault();
     axios.post('/api/sendReview', {
-      uid: auth.currentUser.uid,
+      token: token,
       review: reviewText,
       rating: reviewRating,
       createdAt: new Date(),
@@ -81,6 +88,11 @@ const Facultate = () => {
   const [sumReviews, setSumReviews] = useState(0);
   const [nrReviews, setNrReviews] = useState(0);
   const [desc, setDesc] = useState('');
+  const [facultati, setFacultati] = useState([]);
+  const [website, setWebsite] = useState('');
+  const [email, setEmail] = useState('');
+  const [location, setLocation] = useState('');
+  const [phone, setPhone] = useState('');
 
   useEffect(() => {
     if (facultate) {
@@ -91,6 +103,14 @@ const Facultate = () => {
         setSumReviews(facultate.data().sumReviews);
         setNrReviews(facultate.data().nrReviews);
         setDesc(facultate.data().desc);
+        setFacultati(facultate.data().facultati);
+        setWebsite(facultate.data().website);
+        setEmail(facultate.data().email);
+        setLocation(facultate.data().loc);
+        setPhone(facultate.data().phone);
+        auth.currentUser.getIdToken(true).then(function (idToken) {
+          setToken(idToken);
+        });
       }, 10);
     }
   }, [facultate]);
@@ -204,7 +224,34 @@ const Facultate = () => {
               </div>
             </div>
           </div>
-          <div className={styles.facultate__bottomInfo}></div>
+          <div className={styles.facultate__bottomInfo}>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={facultati}
+              sx={{ width: 300 }}
+              value="Facultati"
+              renderInput={(params) => (
+                <TextField {...params} label="Facultati" />
+              )}
+            ></Autocomplete>
+            <h2>
+              <AddIcCallIcon />
+              Numar de telefon: {phone}
+            </h2>
+            <h2>
+              <ContactMailIcon /> Email de contact: {email}
+            </h2>
+            <h2>
+              <PlaceIcon />
+              Locatie: {location}
+            </h2>
+            <Link href={`${website}`}>
+              <Button variant="contained" color="primary">
+                Viziteaza website: {website}
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

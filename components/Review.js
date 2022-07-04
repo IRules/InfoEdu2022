@@ -1,8 +1,9 @@
 import { Box, IconButton, Menu, MenuItem, Rating } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../styles/Review.module.css';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from 'axios';
+import { auth } from '../lib/firebase';
 
 function Review(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,6 +19,7 @@ function Review(props) {
     axios.post(`/api/admin/deleteReview`, {
       createdAt: props.createdAt,
       slug: props.slug,
+      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
     });
   };
 
@@ -26,6 +28,24 @@ function Review(props) {
       user: props.uid,
     });
   };
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (auth.currentUser) {
+        axios
+          .post('/api/admin/isAdmin/', {
+            token: auth.currentUser.toJSON().stsTokenManager.accessToken,
+          })
+          .then((res) => {
+            if (res.data.isAdmin) {
+              setIsAdmin(true);
+            }
+          });
+      }
+    }, 1000);
+  }, [auth.currentUser]);
 
   return (
     <div className={styles.review}>
@@ -37,9 +57,13 @@ function Review(props) {
           precision={0.1}
           readOnly
         />
-        <IconButton onClick={handleClick}>
-          <MoreVertIcon sx={{ fontSize: 15 }} />
-        </IconButton>
+        {isAdmin ? (
+          <IconButton onClick={handleClick}>
+            <MoreVertIcon sx={{ fontSize: 15 }} />
+          </IconButton>
+        ) : (
+          <></>
+        )}
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}

@@ -1,4 +1,6 @@
-
+.login {
+  overflow-y: hidden;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -53,7 +55,7 @@
         height: 100vh; 
         display: flex;
         justify-content: center;
-    
+        overflow: hidden;
     }
     
     .login__spaceForm {
@@ -193,7 +195,7 @@
   text-align: center;
 }
 .login__spaceForm{
-  margin-top: 20vh;
+  margin-top: 10vh;
   margin-bottom: 20vh;
   /* align-items: center; */
   display: grid;
@@ -201,6 +203,7 @@
   /* grid-template-columns: repeat(3, 1fr); */
   grid-column-gap: 10px;
   grid-row-gap: -40px;
+  height: 50%;
 }
 .login__art {
   width: 52vw;
@@ -216,10 +219,10 @@
 
 .login__spaceFormUsername{
   justify-self :center;
-  /* margin: 0; */
+  margin: 0;
 }
 
 .login__spaceFormPassword{
   justify-self :center;
-  /* margin: 0; */
+  margin: 0;
 }

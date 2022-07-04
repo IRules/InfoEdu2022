@@ -3,7 +3,7 @@ import React from 'react';
 import styles from '../styles/Admin.module.css';
 import PlaceIcon from '@mui/icons-material/Place';
 import CountUp from 'react-countup';
-function CardAdmin() {
+function CardAdmin(props) {
   return (
     <div className={styles.admin__card}>
       <div className={styles.admin__cardUniversity}>
@@ -11,16 +11,16 @@ function CardAdmin() {
           <Avatar
             sx={{ width: 56, height: 56 }}
             variant="rounded"
-            src="https://yt3.ggpht.com/ytc/AKedOLTw4UuhjdclbzQRMkfHSwDDPCPxRjdWfTKOtHbjRg=s900-c-k-c0x00ffffff-no-rj"
+            src={props.emblem}
           ></Avatar>
         </div>
         <div className={styles.admin__cardUniversityInfo}>
           <div className={styles.admin__cardUniversityInfoName}>
-            Universitatea Babeș-Bolyai
+            {props.name}
           </div>
           <div className={styles.admin__cardUniversityInfoLocation}>
             <PlaceIcon />
-            Cluj-Napoca
+            {props.loc}
           </div>
         </div>
         <div className={styles.admin__cardUniversityFiller}></div>
@@ -29,13 +29,13 @@ function CardAdmin() {
         <div className={styles.admin__cardStatisticsClicks}>
           <div className={styles.admin__cardStatisticsClicksName}>Vizite</div>
           <div className={styles.admin__cardStatisticsClicksNumber}>
-            <CountUp end={69420} duration={3} />
+            <CountUp end={props.vizite} duration={3} />
           </div>
         </div>
         <div className={styles.admin__cardStatisticsClicks}>
           <div className={styles.admin__cardStatisticsClicksName}>Recenzie</div>
           <div className={styles.admin__cardStatisticsClicksNumber2}>
-            <CountUp end={5} duration={3} />
+            {props.rating}
           </div>
         </div>
         <div className={styles.admin__cardStatisticsClicks2}>
@@ -43,23 +43,9 @@ function CardAdmin() {
             Nr. Recenzii
           </div>
           <div className={styles.admin__cardStatisticsClicksNumber3}>
-            <CountUp end={69420} duration={3} />
+            <CountUp end={props.nrReviews} duration={3} />
           </div>
         </div>
-        {/* <div className={styles.admin__cardStatisticsRatings}>
-          <div className={styles.admin__cardStatisticsRatingsRate}>
-            Rating: <Rating value={5} readOnly />
-          </div>
-          <div className={styles.admin__cardStatisticsRatingsRate}>
-            Rating: <Rating value={5} readOnly />
-          </div>
-          <div className={styles.admin__cardStatisticsRatingsRate}>
-            Rating: <Rating value={5} readOnly />
-          </div>
-          <div className={styles.admin__cardStatisticsRatingsRate}>
-            Rating: <Rating value={5} readOnly />
-          </div>
-        </div> */}
       </div>
     </div>
   );

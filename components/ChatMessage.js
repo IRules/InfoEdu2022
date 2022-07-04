@@ -17,24 +17,27 @@ function ChatMessage(props) {
 
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const user = auth.currentUser;
-
   useEffect(() => {
     setTimeout(() => {
-      if (user) {
-        axios.get(`/api/admin/isAdmin/`).then((res) => {
-          if (res.data.isAdmin) {
-            setIsAdmin(true);
-          }
-        });
+      if (auth.currentUser) {
+        axios
+          .post('/api/admin/isAdmin/', {
+            token: auth.currentUser.toJSON().stsTokenManager.accessToken,
+          })
+          .then((res) => {
+            if (res.data.isAdmin) {
+              setIsAdmin(true);
+            }
+          });
       }
-    }, 100);
-  }, [user]);
+    }, 1000);
+  }, [auth.currentUser]);
 
   const deleteMessage = () => {
     axios.post(`/api/admin/deleteMessage`, {
       createdAt: props.createdAt,
       slug: props.slug,
+      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
     });
   };
 

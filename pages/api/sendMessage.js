@@ -1,44 +1,48 @@
 import Filter from 'bad-words';
-import { auth } from '../../lib/firebase';
-import { db } from '../../lib/firebase-admin';
+import { authAdmin, db } from '../../lib/firebase-admin';
 const filter = new Filter();
 
 export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
       const { message } = req.body;
-      const { uid } = req.body;
       const { createdAt } = req.body;
       const { slug } = req.body;
-      if (
-        (await auth.currentUser.uid) &&
-        !(await db.collection('users').doc(uid).get()).data().banned
-      ) {
-        if (filter.isProfane(message)) {
-          res.status(400).json({
-            message: 'Profanity detected',
-          });
-        } else {
-          await db
-            .collection('facultati')
-            .doc(slug)
-            .collection('chat')
-            .add({
-              msg: message,
-              createdAt: createdAt,
-              name: (await db.collection('users').doc(uid).get()).data().name,
-              uid: uid,
+      const { token } = req.body;
+      authAdmin.verifyIdToken(token).then(async function (decodedToken) {
+        if (
+          !(await db.collection('users').doc(decodedToken.uid).get()).data()
+            .banned
+        ) {
+          if (filter.isProfane(message)) {
+            res.status(400).json({
+              message: 'Profanity detected',
             });
-
-          res.status(200).json({
-            message: 'Success!',
+          } else {
+            await db
+              .collection('facultati')
+              .doc(slug)
+              .collection('chat')
+              .add({
+                msg: message,
+                createdAt: createdAt,
+                name: (
+                  await db.collection('users').doc(decodedToken.uid).get()
+                ).data().name,
+                uid: decodedToken.uid,
+              })
+              .then(() => {
+                res.status(200).json({
+                  message: 'Success!',
+                });
+              });
+          }
+        } else {
+          res.status(401).json({
+            message: 'Not logged in!',
           });
         }
-      } else {
-        res.status(401).json({
-          message: 'Not logged in!',
-        });
-      }
+      });
     } else {
       res.status(405).json({
         message: 'Method not allowed',

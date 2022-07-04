@@ -5,10 +5,16 @@ import styles from '../styles/Card.module.css';
 import PlaceIcon from '@mui/icons-material/Place';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import ErrorIcon from '@mui/icons-material/Error';
+import axios from 'axios';
 
 function Card(props) {
+  const handleAnalytics = async (e) => {
+    axios.post('/api/analytics', {
+      pid: props.pid,
+    });
+  };
   return (
-    <Link href={`/facultati/${props.pid}`}>
+    <Link href={`/facultati/${props.pid}`} onClick={handleAnalytics}>
       <div className={styles.card}>
         <div
           className={styles.card__image}

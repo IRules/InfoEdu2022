@@ -1,32 +1,52 @@
 import { TextField } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, limit, orderBy, query, where } from 'firebase/firestore';
 import React from 'react';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 import CardAdmin from '../../components/CardAdmin';
-import { auth } from '../../lib/firebase';
+import Navbar from '../../components/Navbar';
+import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/Admin.module.css';
 
 function Admin() {
-  auth.signOut();
+  const [facultati] = useCollectionData(
+    query(collection(firestore, 'facultati')),
+    orderBy('vizite', 'desc'),
+    limit(3)
+  );
+
   return (
-    <div className={styles.admin}>
-      <div className={styles.admin__cardContainer}>
-        <CardAdmin />
-        <CardAdmin />
-        <CardAdmin />
-      </div>
-      <div className={styles.admin__editorContainer}>
-        <div className={styles.admin__editor}>
-          <TextField
-            id="outlined-textarea"
-            label="Multiline Placeholder"
-            placeholder="Placeholder"
-            multiline
-            fullWidth
-            color="secondary"
-          />
+    <>
+      <div className={styles.admin}>
+        <Navbar navstyle={true} />
+        <div className={styles.admin__cardContainer}>
+          {facultati &&
+            facultati.map((fac) => (
+              <CardAdmin
+                key={fac.id}
+                emblem={fac.emblem}
+                name={fac.name}
+                loc={fac.loc}
+                vizite={fac.vizite}
+                rating={fac.sumReviews / fac.nrReviews}
+                nrReviews={fac.nrReviews}
+              />
+            ))}
+        </div>
+        <div className={styles.admin__editorContainer}>
+          <div className={styles.admin__editor}>
+            <TextField
+              id="outlined-textarea"
+              label="Multiline Placeholder"
+              placeholder="Placeholder"
+              multiline
+              fullWidth
+              color="secondary"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -21,6 +21,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { auth } from '../lib/firebase';
 import Router from 'next/router';
+import axios from 'axios';
 
 function Navbar(props) {
   // Menu
@@ -54,6 +55,26 @@ function Navbar(props) {
   };
 
   const [user, setUser] = useState(false);
+
+  const [myToken, setToken] = useState('');
+
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    setTimeout(async () => {
+      if (auth.currentUser) {
+        await axios
+          .post(`/api/admin/isAdmin/`, {
+            token: auth.currentUser.toJSON().stsTokenManager.accessToken,
+          })
+          .then((res) => {
+            if (res.data.isAdmin) {
+              setIsAdmin(true);
+            }
+          });
+      }
+    }, 1500);
+  }, [auth.currentUser]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -140,20 +161,43 @@ function Navbar(props) {
               </li>
             </>
           )}
-
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorMenu}
-            open={open}
-            onClose={handleCloseMenu}
-            MenuListProps={{ 'aria-labelledby': 'basic-button' }}
-          >
-            <MenuItem>
-              <Link href="/account">Contul meu</Link>
-            </MenuItem>
-            <Divider />
-            <MenuItem onClick={signOut}>Delogare</MenuItem>
-          </Menu>
+          {isAdmin ? (
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorMenu}
+              open={open}
+              onClose={handleCloseMenu}
+              MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+              sx={{
+                zIndex: '9999999',
+              }}
+            >
+              <MenuItem>
+                <Link href="/account">Contul meu</Link>
+              </MenuItem>
+              <MenuItem onClick={signOut}>Delogare</MenuItem>
+              <Divider />
+              <MenuItem>
+                <Link href="/admin">Panou admin</Link>
+              </MenuItem>
+            </Menu>
+          ) : (
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorMenu}
+              open={open}
+              onClose={handleCloseMenu}
+              MenuListProps={{ 'aria-labelledby': 'basic-button' }}
+              sx={{
+                zIndex: '9999999',
+              }}
+            >
+              <MenuItem>
+                <Link href="/account">Contul meu</Link>
+              </MenuItem>
+              <MenuItem onClick={signOut}>Delogare</MenuItem>
+            </Menu>
+          )}
         </ul>
       </div>
 

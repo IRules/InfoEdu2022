@@ -1,21 +1,22 @@
-import { auth } from '../../../lib/firebase';
-import { db } from '../../../lib/firebase-admin';
+import { authAdmin, db } from '../../../lib/firebase-admin';
 
 export default async function handler(req, res) {
   try {
-    if (req.method === 'GET') {
-      if (
-        (await auth.currentUser) != null &&
-        (await db.collection('admins').doc(auth.currentUser.uid).get()).exists
-      ) {
-        res.status(200).json({
-          isAdmin: true,
-        });
-      } else {
-        res.status(401).json({
-          isAdmin: false,
-        });
-      }
+    if (req.method === 'POST') {
+      const { token } = req.body;
+      authAdmin.verifyIdToken(token).then(async function (decodedToken) {
+        if (
+          (await db.collection('admins').doc(decodedToken.uid).get()).exists
+        ) {
+          res.status(200).json({
+            isAdmin: true,
+          });
+        } else {
+          res.status(401).json({
+            isAdmin: false,
+          });
+        }
+      });
     } else {
       res.status(405).json({
         message: 'Method not allowed',

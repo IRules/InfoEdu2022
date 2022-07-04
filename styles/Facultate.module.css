@@ -59,6 +59,10 @@
     height: 50vh;
     background-color: var(--color-bg);
     border-radius: 20px;
+    display: grid;
+    align-items: center;
+    padding: 20px;
+    gap: 0px
 }
 
 @media screen and (max-width: 1200px) {
