@@ -60,7 +60,6 @@ function Navbar(props) {
       if (auth.currentUser) {
         setUser(true);
       }
-      console.log(auth.currentUser);
     }, 1000);
   }, [auth.currentUser]);
   return (

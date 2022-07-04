@@ -64,7 +64,6 @@ export default function Facultati() {
       if (auth.currentUser) {
         setUser(true);
       }
-      console.log(auth.currentUser);
     }, 1000);
   }, [auth.currentUser]);
 
@@ -75,7 +74,7 @@ export default function Facultati() {
       <div className={styles.facultati}>
         <Navbar navstyle={true} />
         <div className={styles.facultati__lista}>
-          <List searchValue={search.current} key={1}></List>
+          <List searchValue={search.current}></List>
         </div>
       </div>
     </Fade>

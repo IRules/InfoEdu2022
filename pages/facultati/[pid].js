@@ -44,7 +44,6 @@ const Facultate = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    console.log(auth.currentUser.uid);
     axios.post('/api/sendMessage', {
       uid: auth.currentUser.uid,
       message: message,
@@ -129,7 +128,7 @@ const Facultate = () => {
               {reviews &&
                 reviews.map((rev) => (
                   <Review
-                    key={rev.id}
+                    key={rev.id + Math.random()}
                     name={rev.name}
                     rating={rev.rating}
                     text={rev.text}
@@ -151,9 +150,10 @@ const Facultate = () => {
               <div className={styles.facultate__infoReviewsSubmitButton}>
                 <Rating
                   name="half-rating"
-                  defaultValue={reviewRating}
+                  defaultValue={parseFloat(reviewRating)}
+                  value={parseFloat(reviewRating)}
                   precision={0.1}
-                  onChange={(e) => setReviewRating(e.target.value)}
+                  onChange={(e, value) => setReviewRating(value)}
                   color="secondary"
                 />
                 &#160;&#160;&#160;&#160;
@@ -174,7 +174,7 @@ const Facultate = () => {
               {chat &&
                 chat.map((mes) => (
                   <ChatMessage
-                    key={mes.id}
+                    key={mes.id + Math.random()}
                     name={mes.name}
                     text={mes.msg}
                     createdAt={mes.createdAt}
