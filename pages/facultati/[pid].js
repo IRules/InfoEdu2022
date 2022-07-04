@@ -24,6 +24,7 @@ import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/Facultate.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Navbar from '../../components/Navbar';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Facultate = () => {
   const dummy = useRef();
@@ -61,7 +62,8 @@ const Facultate = () => {
       createdAt: new Date(),
       slug: pid,
     });
-    setRating(0);
+    setReviewRating(0.1);
+    setReviewText('');
   };
   const [chat] = useCollectionData(
     query(
@@ -76,7 +78,8 @@ const Facultate = () => {
   const [cover, setCover] = useState('');
   const [emblem, setEmblem] = useState('');
   const [name, setName] = useState('');
-  const [rating, setRating] = useState(0);
+  const [sumReviews, setSumReviews] = useState(0);
+  const [nrReviews, setNrReviews] = useState(0);
   const [desc, setDesc] = useState('');
 
   useEffect(() => {
@@ -85,7 +88,8 @@ const Facultate = () => {
         setCover(facultate.data().cover);
         setEmblem(facultate.data().emblem);
         setName(facultate.data().name);
-        setRating(facultate.data().rating);
+        setSumReviews(facultate.data().sumReviews);
+        setNrReviews(facultate.data().nrReviews);
         setDesc(facultate.data().desc);
       }, 10);
     }
@@ -111,7 +115,7 @@ const Facultate = () => {
                 {name}
                 <Rating
                   name="read-only"
-                  value={rating}
+                  value={sumReviews / nrReviews}
                   precision={0.1}
                   readOnly
                 />
@@ -124,7 +128,7 @@ const Facultate = () => {
               {reviews &&
                 reviews.map((rev) => (
                   <Review
-                    key={rev.id}
+                    key={rev.id + Math.random()}
                     name={rev.name}
                     rating={rev.rating}
                     text={rev.text}
@@ -146,16 +150,17 @@ const Facultate = () => {
               <div className={styles.facultate__infoReviewsSubmitButton}>
                 <Rating
                   name="half-rating"
-                  defaultValue={reviewRating}
+                  defaultValue={parseFloat(reviewRating)}
+                  value={parseFloat(reviewRating)}
                   precision={0.1}
-                  onChange={(e) => setReviewRating(e.target.value)}
+                  onChange={(e, value) => setReviewRating(value)}
                   color="secondary"
                 />
                 &#160;&#160;&#160;&#160;
                 <Button
                   variant="contained"
                   onClick={handleSendReview}
-                  color="secondary"
+                  color="primary"
                 >
                   Submit Review
                 </Button>
@@ -169,7 +174,7 @@ const Facultate = () => {
               {chat &&
                 chat.map((mes) => (
                   <ChatMessage
-                    key={mes.id}
+                    key={mes.id + Math.random()}
                     name={mes.name}
                     text={mes.msg}
                     createdAt={mes.createdAt}

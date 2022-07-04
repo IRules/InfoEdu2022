@@ -11,8 +11,6 @@ function List(props) {
     orderBy('name')
   );
 
-  console.log(facultati);
-
   return (
     <div className={styles.list}>
       <div className={styles.list__container}>
@@ -20,7 +18,7 @@ function List(props) {
         {facultati &&
           facultati.map((fac) => (
             <Card
-              key={fac.id}
+              key={fac.id + Math.random()}
               multipleFac={fac.multipleFac}
               image={fac.cover}
               title={fac.name}

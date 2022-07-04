@@ -1,25 +1,22 @@
-import { auth } from '../../../lib/firebase';
 import { db } from '../../../lib/firebase-admin';
+import { auth } from '../../../lib/firebase';
 
 export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
-      const { user } = req.body;
-
-      const uid = await auth.currentUser.uid;
-      if (
-        (await uid) != null &&
-        (await db.collection('admins').doc(uid).get()).exists
-      ) {
-        await db.collection('users').doc(user).update({
-          banned: true,
+      if ((await auth.currentUser) == null) {
+        res.status(401).json({
+          message: 'Not logged in',
+        });
+      } else {
+        const { buget } = req.body;
+        const { medieBac } = req.body;
+        await db.collection('users').doc(auth.currentUser.uid).update({
+          buget: buget,
+          medieBac: medieBac,
         });
         res.status(200).json({
           message: 'Success!',
-        });
-      } else {
-        res.status(401).json({
-          message: 'Not Admin',
         });
       }
     } else {

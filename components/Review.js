@@ -50,7 +50,7 @@ function Review(props) {
           }}
         >
           <MenuItem onClick={banUser}>Baneaza utilizatorul</MenuItem>
-          <MenuItem onClick={deleteMessage}>Sterge mesajul</MenuItem>
+          <MenuItem onClick={deleteMessage}>Sterge review</MenuItem>
         </Menu>
       </div>
       <div className={styles.review__text}>{props.text}</div>

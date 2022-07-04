@@ -38,6 +38,7 @@ function Navbar(props) {
     auth.signOut();
     setAnchorMenu(null);
     setUser(false);
+    Router.push('/');
   };
 
   // Script media
@@ -59,7 +60,6 @@ function Navbar(props) {
       if (auth.currentUser) {
         setUser(true);
       }
-      console.log(auth.currentUser);
     }, 1000);
   }, [auth.currentUser]);
   return (
