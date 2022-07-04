@@ -1,5 +1,6 @@
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 import { createTheme, Fade, ThemeProvider } from '@mui/material';
+import Head from 'next/head';
 import '../styles/globals.css';
 
 const theme = createTheme({
@@ -13,8 +14,8 @@ const theme = createTheme({
       mode: 'dark',
       main: '#ffffff',
     },
-    succes:{
-      dark: '#ffffff'
+    succes: {
+      dark: '#ffffff',
     },
   },
 });
@@ -29,6 +30,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <ThemeProvider theme={theme}>
+        <Head>
+          <title>ProjectAlpha</title>
+        </Head>
         <Component {...pageProps} />
       </ThemeProvider>
     </FpjsProvider>
