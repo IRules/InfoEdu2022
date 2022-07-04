@@ -33,18 +33,6 @@ function Admin() {
               />
             ))}
         </div>
-        <div className={styles.admin__editorContainer}>
-          <div className={styles.admin__editor}>
-            <TextField
-              id="outlined-textarea"
-              label="Multiline Placeholder"
-              placeholder="Placeholder"
-              multiline
-              fullWidth
-              color="secondary"
-            />
-          </div>
-        </div>
       </div>
     </>
   );
