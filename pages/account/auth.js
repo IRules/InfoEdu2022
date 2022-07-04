@@ -63,9 +63,9 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <Button variant="contained" onClick={signIn}>
+            <a className={styles.button} variant="contained" onClick={signIn}>
               Continuati
-            </Button>
+            </a>
             <div className={styles.login__spaceFormHorizontalLine} />
           </div>
         </div>
@@ -154,9 +154,9 @@ function SignUp() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <Button variant="contained" onClick={signUp} style={styles.button}>
+            <a className={styles.button} onClick={signUp} sx={{margin: 0}} >
               Continuati
-            </Button>
+            </a>
             <div className={styles.login__spaceFormHorizontalLine} />
           </div>
         </div>
@@ -194,7 +194,7 @@ export default function Auth() {
               setAuthMethod(newValue);
             }}
             sx={{
-              width: '90%',
+              background: 'transparent',
             }}
           >
             <BottomNavigationAction label="Logare" icon={<LockOpenIcon />} />

@@ -13,6 +13,9 @@ const theme = createTheme({
       mode: 'dark',
       main: '#ffffff',
     },
+    succes:{
+      dark: '#ffffff'
+    },
   },
 });
 

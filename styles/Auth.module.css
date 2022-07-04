@@ -1,7 +1,7 @@
 
 
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .auth__method {
       margin-top: -15vh;
       margin-left: 0vw;
@@ -35,21 +35,26 @@
 @media only screen and (min-width: 1000px) {
   .auth__method {
       margin-top: -15vh;
-      width: 50vw; 
+      width: 100%; 
   }
+} */
+.auth__method {
+  margin-top: -15vh;
+  width:fit-content; 
+  /* margin-left: 18vw; */
 }
-
-@media (max-width: 1000px) {
+@media (max-width: 875px) {
     .login {
         background-color: #36393e;
-        width: 100vw;
+        width: 100%;
         height: 100vh;
         display: flex;
+        align: center;
     }
     
     .login__space {
-        background-color: #ff7f01;
-        width: 100vw;
+        background-color: var(--color-bg2);
+        width: 100%;
         height: 100vh; 
         display: flex;
         justify-content: center;
@@ -58,42 +63,43 @@
     
     .login__spaceForm {
         margin-top: 25vh;
+        align:center;
+        margin-left: 6%;
+        margin-right: 6%;
     }
     
     .login__spaceFormUsername {
         color: #fff;
         font-size: 18px;
-        width: 100%;
         height: 45px;
-          padding-left: 15px;
-          border: none;
-          outline: none;
-          border-radius: 20px;
+        padding-left: 15px;
+        border: 1px solid var(--color-fg);
+        outline: none;
+        border-radius: 10px;
         margin-bottom: 20px;
-        background: rgba(255,255,255,.2);
+        background: var(--color1);
         width: 70vw;
       }
     
       .login__spaceFormPassword {
         color: #fff;
         font-size: 18px;
-        width: 100%;
         height: 45px;
-          padding-left: 15px;
-          border: none;
-          outline: none;
-          border-radius: 20px;
+        padding-left: 15px;
+        border: 1px solid var(--color-fg);
+        outline: none;
+        border-radius: 10px;
         margin-bottom: 20px;
-        background: rgba(255,255,255,.2);
+        background: var(--color1);
         width: 70vw;
       }
     
     .login__spaceFormTitle {
-        color: #fff;
+        color: var(--color-fg);
     }
     
     .login__spaceFormSecondTitle {
-        color: #fff;
+        color: var(--color-fg);
     }
     
     .login__art {
@@ -108,9 +114,16 @@
           width: 100vw;
           height: 100vh;
       }
+      .auth__method {
+        margin-top: -15vh;
+        width:fit-content; 
+        position: absolute;
+        align:center;
+      }
+      
   }
 
-  @media (min-width: 1000px) {
+  @media (min-width: 876px) {
     .login {
         width: 100vw;
         height: 100vh;
@@ -131,7 +144,6 @@
         width: 100%;
         height: 45px;
         padding-left: 15px;
-        border: none;
         outline: none;
         border-radius:10px;
         border: 1px solid var(--color-fg);
@@ -159,6 +171,10 @@
     .login__spaceFormSecondTitle {
         color: var(--color-fg);
     }
+    .auth__method {
+      margin-top: -15vh;
+      align: center;
+  }
     
     
       
@@ -225,6 +241,21 @@
   margin: 0;
 }
 .button{
-  width: 10%;
-  color: #fff;
+  justify-self: center;
+  border-radius: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-fg);
+  border: 1px solid var(--color2);
+  padding: 12px 34px;
+  font-size: 15px;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover{
+  border: 1px solid var(--color4);
+  background: var(--color4);
+  transition: 0.5s;
 }
