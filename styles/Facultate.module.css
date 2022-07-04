@@ -4,6 +4,7 @@
     padding: 20px;
     justify-content: center;
     gap: 20px;
+    color: #f1f2f3;
 }
 
 .facultate__image {
@@ -26,7 +27,7 @@
 .facultate__infoDescription {
     width: 45vw;
     height: 70vh;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 20px 0px 0px 20px;
     overflow: auto;
 }
@@ -34,7 +35,7 @@
 .facultate__infoReviews {
     width: 45vw;
     height: 70vh;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 0px 20px 20px 0px;
 }
 
@@ -49,14 +50,14 @@
 .facultate__bottomChat {
     width: 44vw;
     height: 50vh;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 20px;
 }
 
 .facultate__bottomInfo {
     width: 44vw;
     height: 50vh;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 20px;
 }
 

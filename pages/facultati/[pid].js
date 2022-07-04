@@ -63,7 +63,8 @@ const Facultate = () => {
       createdAt: new Date(),
       slug: pid,
     });
-    setRating(0);
+    setReviewRating(0.1);
+    setReviewText('');
   };
   const [chat] = useCollectionData(
     query(

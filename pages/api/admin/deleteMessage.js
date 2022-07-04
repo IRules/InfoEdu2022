@@ -10,6 +10,9 @@ export default async function handler(req, res) {
       (await uid) != null &&
       (await db.collection('admins').doc(uid).get()).exists
     ) {
+      res.status(200).json({
+        message: 'Success!',
+      });
       await db
         .collection('facultati')
         .doc(slug)
@@ -21,7 +24,10 @@ export default async function handler(req, res) {
             doc.ref.delete();
           });
         });
-      res.status(200);
+    } else {
+      res.status(401).json({
+        message: 'Not admin!',
+      });
     }
   } else {
     res.status(405).json({

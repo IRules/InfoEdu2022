@@ -26,7 +26,9 @@ export default async function handler(req, res) {
             uid: uid,
           });
 
-        res.status(200);
+        res.status(200).json({
+          message: 'Success!',
+        });
       }
     } else {
       res.status(401).json({

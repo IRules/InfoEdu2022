@@ -1,7 +1,6 @@
 .settings {
     width: 100vw;
         display: flex;
-        align-items: center;
         justify-content: left;
 }
 
@@ -169,6 +168,12 @@
   }
 
   @media screen and (max-width: 580px) {
+    .settings__containerAccount {
+        display: grid;
+        height: 350px;
+        justify-content: center ;
+    }
+
     .settings__containerAccountPfp {
         display: none;
     }

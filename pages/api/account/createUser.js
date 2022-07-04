@@ -28,7 +28,9 @@ export default async function handler(req, res) {
               medieBac: 0,
               banned: false,
             });
-            res.status(200);
+            res.status(200).json({
+              message: 'Success!',
+            });
           })
           .catch((error) => {
             res.status(400).json({

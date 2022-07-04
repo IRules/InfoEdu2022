@@ -169,6 +169,9 @@ export default function Auth() {
             onChange={(event, newValue) => {
               setAuthMethod(newValue);
             }}
+            sx={{
+              width: '90%',
+            }}
           >
             <BottomNavigationAction label="Logare" icon={<LockOpenIcon />} />
             <BottomNavigationAction label="Inregistrare" icon={<LoginIcon />} />
