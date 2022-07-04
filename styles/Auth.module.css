@@ -1,6 +1,4 @@
-.login {
-  overflow-y: hidden;
-}
+
 
 
 @media only screen and (max-width: 600px) {
@@ -120,30 +118,24 @@
     }
     
     .login__space {
-        background-color: #ff7f01;
+        background-color: var(--color-bg);
         width: 48vw;
-        height: 100vh;
-        border-radius: 0px 40px 40px 0px;   
+        height: 100vh;  
         display: flex;
         justify-content: center;
     
     }
-    
-    .login__spaceForm {
-       
-    }
-    
     .login__spaceFormUsername {
         color: #fff;
         font-size: 18px;
         width: 100%;
         height: 45px;
-          padding-left: 15px;
-          border: none;
-          outline: none;
-          border-radius: 20px;
-        margin-bottom: 20px;
-        background: rgba(255,255,255,.2);
+        padding-left: 15px;
+        border: none;
+        outline: none;
+        border-radius:10px;
+        border: 1px solid var(--color-fg);
+        background: var(--color1);
         width: 20vw;
       }
     
@@ -152,34 +144,40 @@
         font-size: 18px;
         width: 100%;
         height: 45px;
-          padding-left: 15px;
-          border: none;
-          outline: none;
-          border-radius: 20px;
-        margin-bottom: 20px;
-        background: rgba(255,255,255,.2);
+        padding-left: 15px;
+        border: 1px solid var(--color-fg);
+        outline: none;
+        border-radius: 10px;
+        background: var(--color1);
         width: 20vw;
       }
     
     .login__spaceFormTitle {
-        color: white;
+        color: var(--color-fg);
     }
     
     .login__spaceFormSecondTitle {
-        color: #FFF;
+        color: var(--color-fg);
     }
     
     
       
 }
-.login{
-  padding-top: 5.4%;
+
+.login {
+  font-family: 'Times New Roman', Times, serif;
+  overflow-y: hidden;
+}
+.login{ 
+  padding-top: 4%;
   font-family: 'Open Sans', sans-serif;
   background-color: var(--color-bg2);
 }
-
+.login__spaceForm{
+  height: 80%;
+}
 .login__spaceFormHorizontalLine{
-  border-top: 1px solid white;
+  border-top: 1px solid var(--color-fg);
   width: auto;
   margin-top: 8%;
   margin-bottom: 8%;
@@ -225,4 +223,8 @@
 .login__spaceFormPassword{
   justify-self :center;
   margin: 0;
+}
+.button{
+  width: 10%;
+  color: #fff;
 }
