@@ -5,9 +5,8 @@ export default async function handler(req, res) {
     authAdmin.verifyIdToken(token).then(async function (decodedToken) {
       const { values } = req.body;
 
-      console.log(values);
-
       let ok = true;
+      values[0] = 0;
 
       for (let i = 0; i < values.length; i++) {
         try {
@@ -161,9 +160,12 @@ export default async function handler(req, res) {
           artistic,
         ];
 
-        await db.collection('users').doc(decodedToken.uid).update({
-          personality: result,
-        });
+        await db
+          .collection('users')
+          .doc(decodedToken.uid)
+          .update({
+            personality: result.sort((a, b) => b - a)[5],
+          });
         res.status(200).json({
           message: 'Success',
         });

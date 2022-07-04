@@ -59,72 +59,70 @@ function PersonalityTest() {
   };
   return (
     <Fade>
-    <>
-      <div className={styles.personalityTest}>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-          <Alert severity="error">{error}</Alert>
-        </Snackbar>
-        <Navbar navstyle={true} />
-        <div className={styles.personalityTest__container}>
-          <Alert
-            severity="info"
-            sx={{
-              marginTop: '1rem',
-              height: '90px',
-            }}
-          >
-            Tot ce trebuie să faceţi este să răspundeţi la următoarele 120 de
-            întrebări, care încep cu „Ţi-ar plăcea să…?”
-          </Alert>
+      <>
+        <div className={styles.personalityTest}>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert severity="error">{error}</Alert>
+          </Snackbar>
+          <Navbar navstyle={true} />
+          <div className={styles.personalityTest__container}>
+            <Alert
+              severity="info"
+              sx={{
+                marginTop: '1rem',
+                height: '90px',
+              }}
+            >
+              Tot ce trebuie să faceţi este să răspundeţi la următoarele 120 de
+              întrebări, care încep cu „Ţi-ar plăcea să…?”
+            </Alert>
+            <br></br>
+            {intrebari &&
+              intrebari.map((intrebare, index) => {
+                return (
+                  <div key={index + 1}>
+                    <p>{intrebare}</p>
+                    <RadioGroup
+                      row
+                      value={value[index]}
+                      onChange={(e) => {
+                        value[index + 1] = parseInt(e.target.value);
+                      }}
+                    >
+                      <FormControlLabel
+                        value={2}
+                        control={<Radio />}
+                        label="Da, mi-ar placea"
+                      />
+                      <FormControlLabel
+                        value={1}
+                        control={<Radio />}
+                        label="Imi este indiferent"
+                      />
+                      <FormControlLabel
+                        value={0}
+                        control={<Radio />}
+                        label="Nu mi-ar placea"
+                      />
+                    </RadioGroup>
+                  </div>
+                );
+              })}
+            <br></br>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                console.log(value);
+                handleSubmit();
+              }}
+            >
+              Submit
+            </Button>
+          </div>
           <br></br>
-          {intrebari &&
-            intrebari.map((intrebare, index) => {
-              return (
-                <div key={index}>
-                  <p>{intrebare}</p>
-                  <RadioGroup
-                    row
-                    value={value[index]}
-                    onChange={(e) => {
-                      const res = [];
-                      res[index] = e.target.value;
-                      value[index] = parseInt(e.target.value);
-                    }}
-                  >
-                    <FormControlLabel
-                      value={2}
-                      control={<Radio />}
-                      label="Da, mi-ar placea"
-                    />
-                    <FormControlLabel
-                      value={1}
-                      control={<Radio />}
-                      label="Imi este indiferent"
-                    />
-                    <FormControlLabel
-                      value={0}
-                      control={<Radio />}
-                      label="Nu mi-ar placea"
-                    />
-                  </RadioGroup>
-                </div>
-              );
-            })}
-          <br></br>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              console.log(value);
-              handleSubmit();
-            }}
-          >
-            Submit
-          </Button>
         </div>
-        <br></br>
-      </div>
-    </>
+      </>
     </Fade>
   );
 }

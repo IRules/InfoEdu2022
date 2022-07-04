@@ -69,13 +69,13 @@ function Settings() {
 
   const [persComoponent, setPersComoponent] = useState(
     <div className={styles.settings__containerTestProfessions}>
-      <h1>Personalitate: Realist</h1>
+      <h1>Personalitate: Investigativ</h1>
       <p>
-        Este caracterizat prin tendinţa de a se îndrepta spre activităţi care
-        presupun manipularea obiectelor, instrumentelor, maşinilor; are
-        ingeniozitate tehnică şi spirit practic. Îi plac activităţile în aer
-        liber, are dificultăţi în a-şi exprima sentimentele, îi place să
-        construiască şi să repare.
+        Îi place să rezolve sarcini abstracte, să înţeleagă şi să organizeze
+        lumea. Are abilităţi matematice, ştiinţifice, este analitic şi curios.
+        Nu îi plac regulile şi nici să lucreze în echipă. Este original şi
+        creativ. Se îndreaptă spre domenii care implică cercetare şi
+        investigare.
       </p>
       <br></br>
       <h2
@@ -85,16 +85,16 @@ function Settings() {
       >
         Posibile profesii
       </h2>
-      <p>- inginer mecanic</p>
-      <p>- optician</p>
-      <p>- poliţist</p>
-      <p>- constructor</p>
-      <p>- arheolog</p>
-      <p>- tâmplar</p>
-      <p>- tehnician dentar</p>
+      <p>- informatician</p>
+      <p>- economist</p>
+      <p>- consultant management</p>
+      <p>- chimist, biolog, fizician </p>
+      <p>- antropolog</p>
+      <p>- farmacist</p>
+      <p>- psiholog</p>
       <p>- bijutier</p>
-      <p>- electrician</p>
-      <p>- instalator</p>
+      <p>- inginer de sistem</p>
+      <p>- geograf, geolog</p>
     </div>
   );
 
