@@ -14,6 +14,9 @@ import { auth } from '../../lib/firebase';
 import Router from 'next/router';
 import Navbar from '/components/Navbar';
 
+import GoogleIcon from '@mui/icons-material/Google';
+
+
 function Login() {
   const [error, setError] = useState('');
 
@@ -76,7 +79,7 @@ function Login() {
               Continuati
             </a>
             <div className={styles.login__spaceFormHorizontalLine} />
-            <a className={styles.login__withGoogle} >Log in with</a>
+            <a className={styles.login__withGoogle} >Or log in with <GoogleIcon sx={{marginLeft: '5px'}}/> </a>
           </div>
         </div>
         <div className={styles.login__art}>

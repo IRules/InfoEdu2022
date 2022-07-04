@@ -242,7 +242,26 @@
 }
 
 .button:hover{
-  border: 1px solid var(--color4);
-  background: var(--color4);
+  border: 1px solid var(--color1);
+  background: var(--color1);
+  transition: 0.5s;
+}
+.login__withGoogle{
+  color: var(--color-fg);
+  justify-self: center;
+  border-radius: 10px;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-fg);
+  border: 1px solid var(--color2);
+  padding: 12px 34px;
+  font-size: 15px;
+  background: transparent;
+  cursor: pointer;
+  text-align: center
+}
+.login__withGoogle:hover{
+  border: 1px solid var(--color1);
+  background: var(--color1);
   transition: 0.5s;
 }
