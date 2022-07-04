@@ -12,6 +12,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 import { auth } from '../../lib/firebase';
 import Router from 'next/router';
+import Navbar from '/components/Navbar'
 
 function Login() {
   const [error, setError] = useState('');
@@ -30,6 +31,8 @@ function Login() {
   };
 
   return (
+    <div>
+    <Navbar navstyle={true}/>
     <div className={styles.login}>
       <div className={styles.login__space}>
         <div className={styles.login__spaceForm}>
@@ -39,6 +42,7 @@ function Login() {
           <h4 className={styles.login__spaceFormSecondTitle}>
             Va rugam sa va logati inainte de a continua
           </h4>
+          <div className={styles.login__spaceFormHorizontalLine} />
           <br></br>
           <input
             className={styles.login__spaceFormUsername}
@@ -61,11 +65,13 @@ function Login() {
           <Button variant="contained" onClick={signIn}>
             Continuati
           </Button>
+          <div className={styles.login__spaceFormHorizontalLine} />
         </div>
       </div>
       <div className={styles.login__art}>
         <img src="/assets/login.svg" alt="" className={styles.login__artImg} />
       </div>
+    </div>
     </div>
   );
 }
@@ -97,6 +103,8 @@ function SignUp() {
   };
 
   return (
+    <div>
+    <Navbar navstyle={true}/>
     <div className={styles.login}>
       <div className={styles.login__space}>
         <div className={styles.login__spaceForm}>
@@ -108,7 +116,7 @@ function SignUp() {
           <h4 className={styles.login__spaceFormSecondTitle}>
             Va rugam sa va inregistrati inainte de a continua
           </h4>
-          <br></br>
+          <div className={styles.login__spaceFormHorizontalLine} />
           <input
             className={styles.login__spaceFormUsername}
             type="text"
@@ -139,11 +147,13 @@ function SignUp() {
           <Button variant="contained" onClick={signUp}>
             Continuati
           </Button>
+          <div className={styles.login__spaceFormHorizontalLine} />
         </div>
       </div>
       <div className={styles.login__art}>
         <img src="/assets/login.svg" alt="" className={styles.login__artImg} />
       </div>
+    </div>
     </div>
   );
 }
