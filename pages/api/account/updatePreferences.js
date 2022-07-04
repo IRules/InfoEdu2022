@@ -8,10 +8,15 @@ export default async function handler(req, res) {
       authAdmin.verifyIdToken(token).then(async function (decodedToken) {
         const { buget } = req.body;
         const { medieBac } = req.body;
-        await db.collection('users').doc(decodedToken.uid).update({
-          buget: buget,
-          medieBac: medieBac,
-        });
+
+        await db
+          .collection('users')
+          .doc(decodedToken.uid)
+          .update({
+            buget: buget,
+            medieBac: medieBac,
+            bugetIndex: buget == 'mic' ? 0 : buget == 'mediu' ? 1 : 2,
+          });
         res.status(200).json({
           message: 'Success!',
         });
