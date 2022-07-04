@@ -48,13 +48,6 @@ export default function Facultati() {
     setAnchorMenu(null);
   };
 
-  const [search, setSearch] = useState('');
-
-  const handleSearch = (e) => {
-    setSearch(e);
-    console.log(search);
-  };
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open2 = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -66,8 +59,6 @@ export default function Facultati() {
 
   const [user, setUser] = useState(false);
 
-  const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
-
   useEffect(() => {
     setTimeout(() => {
       if (auth.currentUser) {
@@ -77,7 +68,8 @@ export default function Facultati() {
     }, 1000);
   }, [auth.currentUser]);
 
-  useEffect(() => {}, [search.current]);
+  const [search, setSearch] = useState('');
+  const [searchWidth, setSearchWidth] = useState('30vw');
   return (
     <Fade>
       <div className={styles.app}>
@@ -86,20 +78,7 @@ export default function Facultati() {
             <Avatar />
           </div>
           <div className={styles.navbar__filler}></div>
-          <div className={styles.navbar__search}>
-            <div class="search">
-              <div class="icon"></div>
-
-              <div class="input">
-                <input type="text" placeholder="Search..." id="mysearch" />
-              </div>
-
-              <span
-                class="clear"
-                onclick="document.getElementById('mysearch').value = ''"
-              ></span>
-            </div>
-          </div>
+          <div className={styles.navbar__search} style={{}}></div>
           <div className={styles.navbar__settings}>
             <IconButton onClick={handleClick}>
               <MenuIcon color="primary" fontSize="large" />

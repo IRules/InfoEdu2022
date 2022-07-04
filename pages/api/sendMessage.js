@@ -5,13 +5,13 @@ const filter = new Filter();
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const user = auth.currentUser;
+    const user = await auth.currentUser;
     const { message } = req.body;
     const { uid } = req.body;
     const { createdAt } = req.body;
     const { slug } = req.body;
     if (
-      user.uid === uid &&
+      (await user.uid) === uid &&
       !(await db.collection('users').doc(uid).get()).data().banned
     ) {
       if (filter.isProfane(message)) {

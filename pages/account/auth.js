@@ -19,10 +19,6 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const signOut = (e) => {
-    auth.signOut();
-  };
-
   const signIn = (e) => {
     e.preventDefault();
 
