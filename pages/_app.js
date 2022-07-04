@@ -5,9 +5,11 @@ import '../styles/globals.css';
 const theme = createTheme({
   palette: {
     primary: {
+      mode: 'dark',
       main: '#ffffff',
     },
     secondary: {
+      mode: 'dark',
       main: '#ffffff',
     },
   },

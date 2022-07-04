@@ -3,10 +3,9 @@ import { db } from '../../../lib/firebase-admin';
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {
-    const uid = await auth.currentUser.uid;
     if (
-      (await uid) != null &&
-      (await db.collection('admins').doc(uid).get()).exists
+      (await auth.currentUser) != null &&
+      (await db.collection('admins').doc(auth.currentUser.uid).get()).exists
     ) {
       res.status(200).json({
         isAdmin: true,

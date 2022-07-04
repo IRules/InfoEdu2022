@@ -5,15 +5,11 @@ const filter = new Filter();
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
-    const user = await auth.currentUser;
     const { message } = req.body;
     const { uid } = req.body;
     const { createdAt } = req.body;
     const { slug } = req.body;
-    if (
-      (await user.uid) === uid &&
-      !(await db.collection('users').doc(uid).get()).data().banned
-    ) {
+    if (uid && !(await db.collection('users').doc(uid).get()).data().banned) {
       if (filter.isProfane(message)) {
         res.status(400).json({
           message: 'Profanity detected',

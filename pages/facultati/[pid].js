@@ -24,6 +24,7 @@ import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/Facultate.module.css';
 import CloseIcon from '@mui/icons-material/Close';
 import Navbar from '../../components/Navbar';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const Facultate = () => {
   const dummy = useRef();
@@ -43,6 +44,7 @@ const Facultate = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
+    console.log(auth.currentUser.uid);
     axios.post('/api/sendMessage', {
       uid: auth.currentUser.uid,
       message: message,
