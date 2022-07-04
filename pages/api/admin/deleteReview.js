@@ -13,6 +13,25 @@ export default async function handler(req, res) {
       await db
         .collection('facultati')
         .doc(slug)
+        .update({
+          nrReviews:
+            (await db.collection('facultati').doc(slug).get()).data()
+              .nrReviews - 1,
+          sumReviews:
+            (await db.collection('facultati').doc(slug).get()).data()
+              .sumReviews -
+            (
+              await db
+                .collection('facultati')
+                .doc(slug)
+                .collection('reviews')
+                .where('createdAt', '==', createdAt)
+                .get()
+            ).docs[0].data().rating,
+        });
+      await db
+        .collection('facultati')
+        .doc(slug)
         .collection('reviews')
         .where('createdAt', '==', createdAt)
         .get()

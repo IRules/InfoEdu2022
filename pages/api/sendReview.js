@@ -29,8 +29,20 @@ export default async function handler(req, res) {
               text: review,
               createdAt: createdAt,
               name: (await db.collection('users').doc(uid).get()).data().name,
-              rating: rating,
+              rating: parseFloat(rating),
               uid: uid,
+            });
+
+          await db
+            .collection('facultati')
+            .doc(slug)
+            .update({
+              sumReviews:
+                (await db.collection('facultati').doc(slug).get()).data()
+                  .sumReviews + parseFloat(rating),
+              nrReviews:
+                (await db.collection('facultati').doc(slug).get()).data()
+                  .nrReviews + 1,
             });
 
           res.status(200).json({

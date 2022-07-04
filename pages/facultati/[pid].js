@@ -79,7 +79,8 @@ const Facultate = () => {
   const [cover, setCover] = useState('');
   const [emblem, setEmblem] = useState('');
   const [name, setName] = useState('');
-  const [rating, setRating] = useState(0);
+  const [sumReviews, setSumReviews] = useState(0);
+  const [nrReviews, setNrReviews] = useState(0);
   const [desc, setDesc] = useState('');
 
   useEffect(() => {
@@ -88,7 +89,8 @@ const Facultate = () => {
         setCover(facultate.data().cover);
         setEmblem(facultate.data().emblem);
         setName(facultate.data().name);
-        setRating(facultate.data().rating);
+        setSumReviews(facultate.data().sumReviews);
+        setNrReviews(facultate.data().nrReviews);
         setDesc(facultate.data().desc);
       }, 10);
     }
@@ -114,7 +116,7 @@ const Facultate = () => {
                 {name}
                 <Rating
                   name="read-only"
-                  value={rating}
+                  value={sumReviews / nrReviews}
                   precision={0.1}
                   readOnly
                 />

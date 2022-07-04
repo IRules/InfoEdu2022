@@ -38,6 +38,7 @@ function Navbar(props) {
     auth.signOut();
     setAnchorMenu(null);
     setUser(false);
+    Router.push('/');
   };
 
   // Script media

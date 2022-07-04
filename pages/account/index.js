@@ -102,7 +102,7 @@ function Settings() {
             </div>
             <div className={styles.settings__containerAccountInfo}>
               <Alert severity="info" sx={{ ml: '20px' }}>
-                Numele este utilizt pentru sectiunea de comentarii si cea de
+                Numele este utilizat pentru sectiunea de comentarii si cea de
                 chat.
               </Alert>
               <br></br>
@@ -160,8 +160,8 @@ function Settings() {
           <div className={styles.settings__containerTest}>
             <div className={styles.settings__containerTestInfo}>
               <Alert severity="info">
-                Aici gaesti o lista de cariere recomandate bazate pe un test de
-                cariera.
+                Aici gaseti o lista de cariere recomandate bazate pe un test de
+                personalitate.
               </Alert>
             </div>
             <div className={styles.settings__containerTestProfessions}>

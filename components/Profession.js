@@ -9,7 +9,12 @@ function Profession() {
         <div className={styles.profession__imageBack}>
           <HomeRepairServiceIcon
             className={styles.profession__imageFront}
-            sx={{ fontSize: 70, color: '#000000' }}
+            sx={{
+              fontSize: 70,
+              color: '#000000',
+              alignSelf: 'center',
+              justifySelf: 'center',
+            }}
           />
         </div>
         <div className={styles.profession__contentDetails}>
