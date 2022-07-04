@@ -1,5 +1,6 @@
 .li{
     margin-top: 15px;
+    margin-bottom: 7px;
    }
    
    .nav {
@@ -74,8 +75,9 @@
    }
    .avatar__pc{
     display: inline-block;
-    padding: 0;
+    padding: 0px;
     margin-left: 2%;
+    align: top;
    }
 
    /* fix the things */
