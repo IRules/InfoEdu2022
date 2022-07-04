@@ -4,6 +4,7 @@ import '../styles/globals.css';
 
 const theme = createTheme({
   palette: {
+    mode: 'dark',
     primary: {
       main: '#ffffff',
     },
