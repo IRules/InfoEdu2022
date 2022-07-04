@@ -1,4 +1,3 @@
-import { auth } from '../../../lib/firebase';
 import Filter from 'bad-words';
 import { db } from '../../../lib/firebase-admin';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -6,11 +5,8 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 export default async function handler(req, res) {
   try {
     if (req.method === 'POST') {
-      if (auth.currentUser != null) {
-        res.status(401).json({
-          message: 'Logged in',
-        });
-      } else {
+      const { token } = req.body;
+      if (token == '') {
         const { username } = req.body;
         const filter = new Filter();
         if (filter.isProfane(username)) {
@@ -39,9 +35,13 @@ export default async function handler(req, res) {
               });
             });
         }
+      } else {
+        res.status(401).json({
+          message: 'Unauthorized',
+        });
       }
     } else {
-      res.status(405).json({
+      res.status(400).json({
         message: 'Method not allowed',
       });
     }

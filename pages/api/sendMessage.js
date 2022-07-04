@@ -30,12 +30,10 @@ export default async function handler(req, res) {
                   await db.collection('users').doc(decodedToken.uid).get()
                 ).data().name,
                 uid: decodedToken.uid,
-              })
-              .then(() => {
-                res.status(200).json({
-                  message: 'Success!',
-                });
               });
+            res.status(200).json({
+              message: 'Success!',
+            });
           }
         } else {
           res.status(401).json({

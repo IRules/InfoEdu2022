@@ -12,7 +12,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import axios from 'axios';
 import { auth } from '../../lib/firebase';
 import Router from 'next/router';
-import Navbar from '/components/Navbar'
+import Navbar from '/components/Navbar';
 
 function Login() {
   const [error, setError] = useState('');
@@ -32,46 +32,50 @@ function Login() {
 
   return (
     <div>
-    <Navbar navstyle={true}/>
-    <div className={styles.login}>
-      <div className={styles.login__space}>
-        <div className={styles.login__spaceForm}>
-          {error ? <Alert severity="error">{error}</Alert> : ''}
-          <br></br>
-          <h1 className={styles.login__spaceFormTitle}>Bun venit! Logare:</h1>
-          <h4 className={styles.login__spaceFormSecondTitle}>
-            Va rugam sa va logati inainte de a continua
-          </h4>
-          <div className={styles.login__spaceFormHorizontalLine} />
-          <br></br>
-          <input
-            className={styles.login__spaceFormUsername}
-            type="text"
-            name="email"
-            placeholder="Email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+      <Navbar navstyle={true} />
+      <div className={styles.login}>
+        <div className={styles.login__space}>
+          <div className={styles.login__spaceForm}>
+            {error ? <Alert severity="error">{error}</Alert> : ''}
+            <br></br>
+            <h1 className={styles.login__spaceFormTitle}>Bun venit! Logare:</h1>
+            <h4 className={styles.login__spaceFormSecondTitle}>
+              Va rugam sa va logati inainte de a continua
+            </h4>
+            <div className={styles.login__spaceFormHorizontalLine} />
+            <br></br>
+            <input
+              className={styles.login__spaceFormUsername}
+              type="text"
+              name="email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              className={styles.login__spaceFormPassword}
+              type="password"
+              name="password"
+              placeholder="Parola ta sigura..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <Button variant="contained" onClick={signIn}>
+              Continuati
+            </Button>
+            <div className={styles.login__spaceFormHorizontalLine} />
+          </div>
+        </div>
+        <div className={styles.login__art}>
+          <img
+            src="/assets/login.svg"
+            alt=""
+            className={styles.login__artImg}
           />
-          <br />
-          <input
-            className={styles.login__spaceFormPassword}
-            type="password"
-            name="password"
-            placeholder="Parola ta sigura..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <Button variant="contained" onClick={signIn}>
-            Continuati
-          </Button>
-          <div className={styles.login__spaceFormHorizontalLine} />
         </div>
       </div>
-      <div className={styles.login__art}>
-        <img src="/assets/login.svg" alt="" className={styles.login__artImg} />
-      </div>
-    </div>
     </div>
   );
 }
@@ -92,6 +96,9 @@ function SignUp() {
           username: name,
           email: email,
           password: password,
+          token: auth
+            ? auth.currentUser.toJSON().stsTokenManager.accessToken
+            : '',
         })
         .then(() => {
           Router.push('/account');
@@ -104,56 +111,60 @@ function SignUp() {
 
   return (
     <div>
-    <Navbar navstyle={true}/>
-    <div className={styles.login}>
-      <div className={styles.login__space}>
-        <div className={styles.login__spaceForm}>
-          {error ? <Alert severity="error">{error}</Alert> : ''}
-          <br></br>
-          <h1 className={styles.login__spaceFormTitle}>
-            Bun venit! Inregistrare:
-          </h1>
-          <h4 className={styles.login__spaceFormSecondTitle}>
-            Va rugam sa va inregistrati inainte de a continua
-          </h4>
-          <div className={styles.login__spaceFormHorizontalLine} />
-          <input
-            className={styles.login__spaceFormUsername}
-            type="text"
-            name="Nume"
-            placeholder="Username..."
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+      <Navbar navstyle={true} />
+      <div className={styles.login}>
+        <div className={styles.login__space}>
+          <div className={styles.login__spaceForm}>
+            {error ? <Alert severity="error">{error}</Alert> : ''}
+            <br></br>
+            <h1 className={styles.login__spaceFormTitle}>
+              Bun venit! Inregistrare:
+            </h1>
+            <h4 className={styles.login__spaceFormSecondTitle}>
+              Va rugam sa va inregistrati inainte de a continua
+            </h4>
+            <div className={styles.login__spaceFormHorizontalLine} />
+            <input
+              className={styles.login__spaceFormUsername}
+              type="text"
+              name="Nume"
+              placeholder="Username..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+            <input
+              className={styles.login__spaceFormUsername}
+              type="text"
+              name="Email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              className={styles.login__spaceFormPassword}
+              type="password"
+              name="password"
+              placeholder="Parola ta sigura..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <Button variant="contained" onClick={signUp}>
+              Continuati
+            </Button>
+            <div className={styles.login__spaceFormHorizontalLine} />
+          </div>
+        </div>
+        <div className={styles.login__art}>
+          <img
+            src="/assets/login.svg"
+            alt=""
+            className={styles.login__artImg}
           />
-          <br />
-          <input
-            className={styles.login__spaceFormUsername}
-            type="text"
-            name="Email"
-            placeholder="Email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <input
-            className={styles.login__spaceFormPassword}
-            type="password"
-            name="password"
-            placeholder="Parola ta sigura..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <Button variant="contained" onClick={signUp}>
-            Continuati
-          </Button>
-          <div className={styles.login__spaceFormHorizontalLine} />
         </div>
       </div>
-      <div className={styles.login__art}>
-        <img src="/assets/login.svg" alt="" className={styles.login__artImg} />
-      </div>
-    </div>
     </div>
   );
 }

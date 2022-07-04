@@ -52,6 +52,7 @@ function Settings() {
   const updateUsername = async () => {
     await axios.post('/api/account/updateName', {
       name: name,
+      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
     });
   };
 
@@ -59,6 +60,7 @@ function Settings() {
     await axios.post('/api/account/updatePreferences', {
       buget: budget,
       medieBac: bac,
+      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
     });
   };
 
@@ -70,7 +72,6 @@ function Settings() {
       setEmail(auth.currentUser.email);
       getDoc(doc(firestore, 'users', `${auth.currentUser.uid}`)).then(
         (user) => {
-          console.log(user.data());
           setName(user.data().name);
           setBac(user.data().medieBac);
           setBudget(user.data().buget);
