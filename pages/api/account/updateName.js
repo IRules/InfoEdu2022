@@ -1,6 +1,5 @@
 import { authAdmin, db } from '../../../lib/firebase-admin';
 import Filter from 'bad-words';
-import { auth } from '../../../lib/firebase';
 
 export default async function handler(req, res) {
   try {

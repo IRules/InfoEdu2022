@@ -31,6 +31,7 @@ import { useEffect } from 'react';
 import { collection, doc, getDoc } from 'firebase/firestore';
 import axios from 'axios';
 import { useDocument } from 'react-firebase-hooks/firestore';
+import Link from 'next/link';
 
 function Settings() {
   const [email, setEmail] = useState('');
@@ -57,12 +58,47 @@ function Settings() {
   };
 
   const updatePreferences = async () => {
-    await axios.post('/api/account/updatePreferences', {
-      buget: budget,
-      medieBac: bac,
-      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
-    });
+    if (value.length == 120) {
+      await axios.post('/api/account/updatePreferences', {
+        buget: budget,
+        medieBac: bac,
+        token: auth.currentUser.toJSON().stsTokenManager.accessToken,
+      });
+    }
   };
+
+  const [persComoponent, setPersComoponent] = useState(
+    <div className={styles.settings__containerTestProfessions}>
+      <h1>Personalitate: Realist</h1>
+      <p>
+        Este caracterizat prin tendinţa de a se îndrepta spre activităţi care
+        presupun manipularea obiectelor, instrumentelor, maşinilor; are
+        ingeniozitate tehnică şi spirit practic. Îi plac activităţile în aer
+        liber, are dificultăţi în a-şi exprima sentimentele, îi place să
+        construiască şi să repare.
+      </p>
+      <br></br>
+      <h2
+        style={{
+          fontWeight: 'bold',
+        }}
+      >
+        Posibile profesii
+      </h2>
+      <p>- inginer mecanic</p>
+      <p>- optician</p>
+      <p>- poliţist</p>
+      <p>- constructor</p>
+      <p>- arheolog</p>
+      <p>- tâmplar</p>
+      <p>- tehnician dentar</p>
+      <p>- bijutier</p>
+      <p>- electrician</p>
+      <p>- instalator</p>
+    </div>
+  );
+
+  const [personalitaties, setPersonalities] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -75,6 +111,7 @@ function Settings() {
           setName(user.data().name);
           setBac(user.data().medieBac);
           setBudget(user.data().buget);
+          setPersonalities(user.data().personality);
         }
       );
     }, 1000);
@@ -166,19 +203,13 @@ function Settings() {
                 personalitate.
               </Alert>
             </div>
-            <div className={styles.settings__containerTestProfessions}>
-              <h1>Profesii:</h1>
-              <Virtuoso
-                className={styles.settings__containerTestProfessions}
-                style={{ height: '400px' }}
-                totalCount={10}
-                itemContent={(index) => <Profession />}
-              />
-            </div>
+            {persComoponent}
             <div className={styles.settings__containerButtons}>
-              <Button variant="contained" color="primary">
-                Reda testul de profesie
-              </Button>
+              <Link href="/account/personalityTest">
+                <Button variant="contained" color="primary">
+                  Reda testul de profesie
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -63,6 +63,9 @@
     align-items: center;
 }
 
+.settings__containerTestProfessions {
+    padding: 20px;
+}
 .settings__containerTestProfessions > h1{
     font-size: 20px;
     font-weight: bolder;
