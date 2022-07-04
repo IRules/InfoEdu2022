@@ -20,7 +20,7 @@ export default async function handler(req, res) {
           res.status(400).json({
             message: 'Profanity detected',
           });
-        } else {
+        } else if (rating < 5.1 || rating > 0.5) {
           await db
             .collection('facultati')
             .doc(slug)
@@ -48,6 +48,10 @@ export default async function handler(req, res) {
           res.status(200).json({
             message: 'Success!',
           });
+        } else {
+          res.status(400).json({
+            message: 'Rating must be between 0.5 and 5.1',
+          });
         }
       } else {
         res.status(401).json({
@@ -62,7 +66,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: 'Something went wrong',
+      message: error.message,
     });
   }
 }
