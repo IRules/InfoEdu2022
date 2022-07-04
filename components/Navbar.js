@@ -95,7 +95,7 @@ function Navbar(props) {
         <img
           src="/assets/logo.png"
           className={styles.img}
-          style={{ width: 130 }}
+          style={{ height: 62 }}
         />
       </a>
       <div
@@ -118,7 +118,7 @@ function Navbar(props) {
                   <Avatar
                     color="primary"
                     src={`https://robohash.org/${auth.currentUser.email}?set=set4`}
-                    sx={{ bgcolor: '#f1f2f3' }}
+                    sx={{ bgcolor: '#f1f2f3',}}
                   />
                 </IconButton>
               </div>

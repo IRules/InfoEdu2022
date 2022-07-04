@@ -30,6 +30,15 @@ function Login() {
       .catch((error) => setError(error.message));
   };
 
+  const [authMethod, setAuthMethod] = React.useState(0);
+
+  useEffect(() => {
+    console.log(auth.currentUser);
+    if (auth.currentUser != null) {
+      Router.push('/account');
+    }
+  }, [auth.currentUser]);
+
   return (
     <div>
       <Navbar navstyle={true} />
@@ -38,9 +47,10 @@ function Login() {
           <div className={styles.login__spaceForm}>
             {error ? <Alert severity="error">{error}</Alert> : ''}
             <br></br>
-            <h1 className={styles.login__spaceFormTitle}>Bun venit! Logare:</h1>
+            <h1 className={styles.login__spaceFormTitle}>Bun venit! <br></br>
+            Logare:</h1>
             <h4 className={styles.login__spaceFormSecondTitle}>
-              Va rugam sa va logati inainte de a continua
+              Vă rugăm să vă logați înainte de a continua
             </h4>
             <div className={styles.login__spaceFormHorizontalLine} />
             <br></br>
@@ -48,7 +58,7 @@ function Login() {
               className={styles.login__spaceFormUsername}
               type="text"
               name="email"
-              placeholder="Email..."
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -57,15 +67,16 @@ function Login() {
               className={styles.login__spaceFormPassword}
               type="password"
               name="password"
-              placeholder="Parola ta sigura..."
+              placeholder="Parolă"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <Button variant="contained" onClick={signIn}>
+            <a className={styles.button} variant="contained" onClick={signIn}>
               Continuati
-            </Button>
+            </a>
             <div className={styles.login__spaceFormHorizontalLine} />
+            <a className={styles.login__withGoogle} >Log in with</a>
           </div>
         </div>
         <div className={styles.login__art}>
@@ -118,17 +129,19 @@ function SignUp() {
             {error ? <Alert severity="error">{error}</Alert> : ''}
             <br></br>
             <h1 className={styles.login__spaceFormTitle}>
-              Bun venit! Inregistrare:
+              Bun venit! <br></br>
+              
+              Înregistrare:
             </h1>
             <h4 className={styles.login__spaceFormSecondTitle}>
-              Va rugam sa va inregistrati inainte de a continua
+              Vă rugăm să vă înregistrați înainte de a continua
             </h4>
             <div className={styles.login__spaceFormHorizontalLine} />
             <input
               className={styles.login__spaceFormUsername}
               type="text"
               name="Nume"
-              placeholder="Username..."
+              placeholder="Username"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
@@ -137,7 +150,7 @@ function SignUp() {
               className={styles.login__spaceFormUsername}
               type="text"
               name="Email"
-              placeholder="Email..."
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -146,14 +159,14 @@ function SignUp() {
               className={styles.login__spaceFormPassword}
               type="password"
               name="password"
-              placeholder="Parola ta sigura..."
+              placeholder="Parolă"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <br />
-            <Button variant="contained" onClick={signUp}>
+            <a className={styles.button} onClick={signUp} sx={{margin: 0}} >
               Continuati
-            </Button>
+            </a>
             <div className={styles.login__spaceFormHorizontalLine} />
           </div>
         </div>
@@ -191,7 +204,8 @@ export default function Auth() {
               setAuthMethod(newValue);
             }}
             sx={{
-              width: '90%',
+              width: '95%',
+              background: 'transparent',
             }}
           >
             <BottomNavigationAction label="Logare" icon={<LockOpenIcon />} />
