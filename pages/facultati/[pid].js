@@ -6,6 +6,7 @@ import {
   Rating,
   Snackbar,
   TextField,
+  Tooltip,
 } from '@mui/material';
 import axios from 'axios';
 import {
@@ -31,6 +32,10 @@ import Link from 'next/link';
 import PlaceIcon from '@mui/icons-material/Place';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import PaidIcon from '@mui/icons-material/Paid';
+import GradingIcon from '@mui/icons-material/Grading';
+import GppMaybeIcon from '@mui/icons-material/GppMaybe';
+import { red } from '@mui/material/colors';
 
 const Facultate = () => {
   const dummy = useRef();
@@ -93,7 +98,13 @@ const Facultate = () => {
   const [email, setEmail] = useState('');
   const [location, setLocation] = useState('');
   const [phone, setPhone] = useState('');
+  const [cost, setCost] = useState('');
+  const [medie, setMedie] = useState(0);
+  const [bugetIndex, setBugetIndex] = useState(0);
 
+  const [medieUser, setMedieUser] = useState(0);
+  const [bugetUser, setBugetUser] = useState('');
+  const [bugetIndexUser, setBugetIndexUser] = useState(0);
   useEffect(() => {
     if (facultate) {
       setTimeout(() => {
@@ -108,6 +119,9 @@ const Facultate = () => {
         setEmail(facultate.data().email);
         setLocation(facultate.data().loc);
         setPhone(facultate.data().phone);
+        setCost(facultate.data().cost);
+        setMedie(facultate.data().medie);
+        setBugetIndex(facultate.data().bugetIndex);
         auth.currentUser.getIdToken(true).then(function (idToken) {
           setToken(idToken);
         });
@@ -115,6 +129,19 @@ const Facultate = () => {
     }
   }, [facultate]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (auth.currentUser) {
+        getDoc(doc(firestore, 'users', `${auth.currentUser.uid}`)).then(
+          (user) => {
+            setMedieUser(user.data().medieBac);
+            setBugetUser(user.data().buget);
+            setBugetIndexUser(user.data().bugetIndex);
+          }
+        );
+      }
+    }, 1000);
+  }, [auth.currentUser]);
   return (
     <>
       <Navbar navstyle={true} />
@@ -237,14 +264,44 @@ const Facultate = () => {
             ></Autocomplete>
             <h2>
               <AddIcCallIcon />
-              Numar de telefon: {phone}
+              Numar de telefon: <b>{phone}</b>
             </h2>
             <h2>
-              <ContactMailIcon /> Email de contact: {email}
+              <ContactMailIcon /> Email de contact: <b>{email}</b>
             </h2>
             <h2>
               <PlaceIcon />
-              Locatie: {location}
+              Locatie: <b>{location}</b>
+            </h2>
+            <h2>
+              <PaidIcon />
+              Cost oras/buget recomandat: <b>{cost}</b>
+              {auth.currentUser ? (
+                bugetIndexUser < bugetIndex ? (
+                  <span>
+                    <Tooltip
+                      title={`Bugetul tau ( ${bugetUser} ) este mai mic decat cel recomandat!`}
+                    >
+                      <GppMaybeIcon sx={{ color: red[600] }} />
+                    </Tooltip>
+                  </span>
+                ) : null
+              ) : null}
+            </h2>
+            <h2>
+              <GradingIcon />
+              Medie minima recomandata: <b>{medie}</b>
+              {auth.currentUser ? (
+                medieUser < medie ? (
+                  <span>
+                    <Tooltip
+                      title={`Media ta ( ${medieUser} ) este mai mica decat minima recomandata!`}
+                    >
+                      <GppMaybeIcon sx={{ color: red[600] }} />
+                    </Tooltip>
+                  </span>
+                ) : null
+              ) : null}
             </h2>
             <Link href={`${website}`}>
               <Button variant="contained" color="primary">

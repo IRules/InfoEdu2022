@@ -140,10 +140,11 @@ function Settings() {
             <FormControl fullWidth>
               <InputLabel>Medie BAC</InputLabel>
               <Select value={bac} label="Medie BAC" onChange={handleBac}>
-                <MenuItem value={'5-7'}>5-7</MenuItem>
-                <MenuItem value={'8-9'}>8-9</MenuItem>
-                <MenuItem value={'9-10'}>9-10</MenuItem>
-                <MenuItem value={'10'}>10</MenuItem>
+                <MenuItem value={6}>6</MenuItem>
+                <MenuItem value={7}>7</MenuItem>
+                <MenuItem value={8}>8</MenuItem>
+                <MenuItem value={9}>9</MenuItem>
+                <MenuItem value={10}>10</MenuItem>
               </Select>
             </FormControl>
             <Button
