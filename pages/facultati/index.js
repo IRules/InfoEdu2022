@@ -1,34 +1,8 @@
-import {
-  alpha,
-  Avatar,
-  BottomNavigation,
-  BottomNavigationAction,
-  Divider,
-  Icon,
-  IconButton,
-  InputBase,
-  ListItemIcon,
-  ListItemText,
-  Menu,
-  MenuItem,
-  styled,
-  TextField,
-  Typography,
-} from '@mui/material';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/Facultati.module.css';
-import RestoreIcon from '@mui/icons-material/Restore';
-import { useEffect, useReducer, useRef, useState } from 'react';
-import EngineeringIcon from '@mui/icons-material/Engineering';
-import ArchitectureIcon from '@mui/icons-material/Architecture';
-import TranslateIcon from '@mui/icons-material/Translate';
+import { useEffect, useState } from 'react';
 import List from '../../components/List';
 import { Fade } from 'react-awesome-reveal';
-
-import SearchIcon from '@mui/icons-material/Search';
-
-import MenuIcon from '@mui/icons-material/Menu';
-import Link from 'next/link';
 import { auth } from '../../lib/firebase';
 
 export default function Facultati() {
