@@ -19,7 +19,6 @@ import Navbar from '../../components/Navbar';
 import styles from '../../styles/Facultati.module.css';
 import RestoreIcon from '@mui/icons-material/Restore';
 import { useEffect, useReducer, useRef, useState } from 'react';
-import FunctionsIcon from '@mui/icons-material/Functions';
 import EngineeringIcon from '@mui/icons-material/Engineering';
 import ArchitectureIcon from '@mui/icons-material/Architecture';
 import TranslateIcon from '@mui/icons-material/Translate';
