@@ -45,7 +45,7 @@ function Landing() {
             succesului. I-ați viitorul in propriile mâini!
           </p>
           <a href="/facultati" className={styles.button}>Încearca acum</a>
-          <a href="/" className={`${styles["button"]} ${styles["button2"]}`}>Test de carieră</a>
+          <a href="/account/personalityTest" className={`${styles["button"]} ${styles["button2"]}`}>Test de carieră</a>
           
         </div>
       </section>
