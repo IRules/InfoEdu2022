@@ -30,6 +30,15 @@ function Login() {
       .catch((error) => setError(error.message));
   };
 
+  const [authMethod, setAuthMethod] = React.useState(0);
+
+  useEffect(() => {
+    console.log(auth.currentUser);
+    if (auth.currentUser != null) {
+      Router.push('/account');
+    }
+  }, [auth.currentUser]);
+
   return (
     <div>
       <Navbar navstyle={true} />
@@ -67,6 +76,7 @@ function Login() {
               Continuati
             </a>
             <div className={styles.login__spaceFormHorizontalLine} />
+            <a className={styles.login__withGoogle} >Log in with</a>
           </div>
         </div>
         <div className={styles.login__art}>
@@ -194,6 +204,7 @@ export default function Auth() {
               setAuthMethod(newValue);
             }}
             sx={{
+              width: '95%',
               background: 'transparent',
             }}
           >
