@@ -9,3 +9,32 @@
       display: none;
   }
 }
+
+.navbar {
+  width: 100vw;
+  height: 8vh;
+  background-color: #1d1f22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar__logo {
+  float: left
+}
+
+.navbar__search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90vw
+}
+@media screen and (max-width: 875px) {
+  .navbar__search {
+      display: none;
+  }
+
+  .navbar__filler {
+      width: 40vw;
+  }
+}

@@ -5,7 +5,7 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { firestore } from '../lib/firebase';
 import { collection, orderBy, query } from 'firebase/firestore';
 
-function List() {
+function List(props) {
   const [facultati] = useCollectionData(
     query(collection(firestore, 'facultati')),
     orderBy('name')
@@ -16,6 +16,7 @@ function List() {
   return (
     <div className={styles.list}>
       <div className={styles.list__container}>
+        {props.searchValue}
         {facultati &&
           facultati.map((fac) => (
             <Card

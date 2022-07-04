@@ -94,7 +94,11 @@ function Navbar(props) {
                 className={user ? styles.avatar__phone : styles.display__none}
               >
                 <IconButton onClick={handleMenu}>
-                  <Avatar color="primary" />
+                  <Avatar
+                    color="primary"
+                    src={`https://robohash.org/${auth.currentUser.email}?set=set4`}
+                    sx={{ bgcolor: '#f1f2f3' }}
+                  />
                 </IconButton>
               </div>
             </>
@@ -106,7 +110,7 @@ function Navbar(props) {
           </li>
           <div className={styles.vertical__line} />
           <li className={styles.li}>
-            <Link href="/facultati">Facultati</Link>
+            <Link href="/facultati  ">Facultati</Link>
           </li>
           <div className={styles.vertical__line} />
           <li className={styles.li}>
@@ -120,7 +124,11 @@ function Navbar(props) {
             <>
               <div className={user ? styles.avatar__pc : styles.display__none}>
                 <IconButton onClick={handleMenu}>
-                  <Avatar color="primary" />
+                  <Avatar
+                    color="primary"
+                    src={`https://robohash.org/${auth.currentUser.email}?set=set4`}
+                    sx={{ bgcolor: '#f1f2f3' }}
+                  />
                 </IconButton>
               </div>
             </>
@@ -128,7 +136,7 @@ function Navbar(props) {
             <>
               <div className={styles.vertical__line} />
               <li className={styles.li}>
-                <Link href="/account/auth">Login</Link>
+                <Link href="/account/auth">Logare</Link>
               </li>
             </>
           )}
@@ -141,10 +149,10 @@ function Navbar(props) {
             MenuListProps={{ 'aria-labelledby': 'basic-button' }}
           >
             <MenuItem>
-              <Link href="/account">Account</Link>
+              <Link href="/account">Contul meu</Link>
             </MenuItem>
             <Divider />
-            <MenuItem onClick={signOut}>Logout</MenuItem>
+            <MenuItem onClick={signOut}>Delogare</MenuItem>
           </Menu>
         </ul>
       </div>
