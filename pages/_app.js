@@ -6,9 +6,17 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#ffffff',
+<<<<<<< HEAD
+=======
+      grey: {
+        900: '#FFFFFF',
+        secondary: '#FFFFFF',
+      },
+      disabled: '#FFFFFF',
+>>>>>>> 3817f7b5f25f278cf274f343c93b709a23d24d49
     },
     secondary: {
-      main: '#101113',
+      main: '#ffffff',
     },
   },
 });

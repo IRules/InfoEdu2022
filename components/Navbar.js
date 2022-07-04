@@ -163,66 +163,6 @@ function Navbar(props) {
         onClick={phoneMenu__show}
       />
     </nav>
-    // <div className={styles.navbar}>
-    //   <div className={styles.navbar__logo}>
-    //     <Avatar />
-    //   </div>
-    //   <div className={styles.navbar__filler}></div>
-    //   <div className={styles.navbar__mobile}>
-    //     <IconButton onClick={handleClick}>
-    //       <MenuIcon color="primary" fontSize="large" />
-    //     </IconButton>
-    //     <Menu
-    //       id="basic-menu"
-    //       anchorEl={anchorEl}
-    //       open={open2}
-    //       onClose={handleClose}
-    //       MenuListProps={{
-    //         'aria-labelledby': 'basic-button',
-    //       }}
-    //     >
-    //       <MenuItem onClick={handleClose}>s</MenuItem>
-    //       <MenuItem onClick={handleClose}>Ghid Facultate</MenuItem>
-    //       <MenuItem onClick={handleClose}>Despre noi</MenuItem>
-    //       <MenuItem onClick={handleClose}>Knowledgebase</MenuItem>
-    //       <Divider />
-    //       <MenuItem onClick={handleClose}>Register</MenuItem>
-    //       <MenuItem onClick={handleClose}>Log in</MenuItem>
-    //     </Menu>
-    //   </div>
-    //   <div className={styles.navbar__search}>
-    //     <Search>
-    //       <SearchIconWrapper>
-    //         <SearchIcon />
-    //       </SearchIconWrapper>
-    //       <StyledInputBase
-    //         placeholder="Search..."
-    //         onChange={(e) => handleSearch(e)}
-    //       />
-    //     </Search>
-    //   </div>
-    //   <div className={styles.navbar__settings}>
-    //     <IconButton onClick={handleMenu}>
-    //       <Avatar sx={{ fontSize: 30 }} color="primary" />
-    //     </IconButton>
-    //     <Menu
-    //       id="basic-menu"
-    //       anchorEl={anchorMenu}
-    //       open={open}
-    //       onClose={handleCloseMenu}
-    //       MenuListProps={{
-    //         'aria-labelledby': 'basic-button',
-    //       }}
-    //     >
-    //       <MenuItem>
-    //         <Link href="/settings">Settings</Link>
-    //       </MenuItem>
-    //       <Divider />
-    //       <MenuItem>Logout</MenuItem>
-    //     </Menu>
-    //   </div>
-    //   <div className={styles.navbar__searchMobile}></div>
-    // </div>
   );
 }
 
