@@ -116,6 +116,7 @@ function Settings() {
                   marginLeft: '20px',
                   width: '200px',
                 }}
+                color="primary"
               >
                 Salveaza numele
               </Button>
@@ -150,6 +151,7 @@ function Settings() {
               onClick={() => {
                 updatePreferences();
               }}
+              color="primary"
             >
               Salveaza preferintele
             </Button>
@@ -172,7 +174,9 @@ function Settings() {
               />
             </div>
             <div className={styles.settings__containerButtons}>
-              <Button variant="contained">Reda testul de profesie</Button>
+              <Button variant="contained" color="primary">
+                Reda testul de profesie
+              </Button>
             </div>
           </div>
         </div>

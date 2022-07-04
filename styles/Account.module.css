@@ -4,28 +4,6 @@
         justify-content: left;
 }
 
-
-.settings__navbar {
-    height: 70px;
-    margin-bottom: 30px;
-    width: 100vw;
-    background-color: aqua;
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
-.settings__navbarBack {
-    height: inherit;
-    display: flex;
-    align-items: center;
-    margin-left: 1%;
-}
-
-.settings__navbarFiller {
-    width: 80%;
-}
-
 .settings__container {
     width: auto;
     height: auto;
@@ -44,7 +22,7 @@
     grid-area: account;
     width: 35vw;
     height: 250px;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -72,8 +50,9 @@
     grid-area: tests;
     width: 600px;
     height: 650px;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 30px;
+    color: #ffffff;
 }
 
 .settings__containerTestInfo {
@@ -120,7 +99,7 @@
     grid-area: preferences;
     width: 35vw;
     height: 340px;
-    background-color: #9fa2a8;
+    background-color: var(--color-bg);
     border-radius: 30px;
     display: grid;
     align-items: center;

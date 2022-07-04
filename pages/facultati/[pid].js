@@ -158,7 +158,7 @@ const Facultate = () => {
                 <Button
                   variant="contained"
                   onClick={handleSendReview}
-                  color="secondary"
+                  color="primary"
                 >
                   Submit Review
                 </Button>
