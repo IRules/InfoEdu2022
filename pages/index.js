@@ -44,8 +44,8 @@ function Landing() {
             carierei, informațiile necesare pentru <br /> facilitarea
             succesului. I-ați viitorul in propriile mâini!
           </p>
-          <a href="/dash" className={styles.button}>Încearca acum</a>
-          <a href="/dash" className={`${styles["button"]} ${styles["button2"]}`}>Spre Knowdelegebase</a>
+          <a href="/facultati" className={styles.button}>Încearca acum</a>
+          <a href="/" className={`${styles["button"]} ${styles["button2"]}`}>Test de carieră</a>
           
         </div>
       </section>

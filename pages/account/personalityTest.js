@@ -13,6 +13,7 @@ import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/PersonalityTest.module.css';
 import Router from 'next/router';
 import axios from 'axios';
+import { Fade } from 'react-awesome-reveal';
 
 function PersonalityTest() {
   const value = [];
@@ -57,6 +58,7 @@ function PersonalityTest() {
       });
   };
   return (
+    <Fade>
     <>
       <div className={styles.personalityTest}>
         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -123,6 +125,7 @@ function PersonalityTest() {
         <br></br>
       </div>
     </>
+    </Fade>
   );
 }
 

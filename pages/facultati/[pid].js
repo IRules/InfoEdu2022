@@ -36,6 +36,7 @@ import PaidIcon from '@mui/icons-material/Paid';
 import GradingIcon from '@mui/icons-material/Grading';
 import GppMaybeIcon from '@mui/icons-material/GppMaybe';
 import { red } from '@mui/material/colors';
+import { Fade } from 'react-awesome-reveal';
 
 const Facultate = () => {
   const dummy = useRef();
@@ -143,6 +144,7 @@ const Facultate = () => {
     }, 1000);
   }, [auth.currentUser]);
   return (
+    <Fade>
     <>
       <Navbar navstyle={true} />
       <div className={styles.facultate}>
@@ -312,6 +314,7 @@ const Facultate = () => {
         </div>
       </div>
     </>
+    </Fade>
   );
 };
 

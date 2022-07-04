@@ -15,6 +15,7 @@ import Router from 'next/router';
 import Navbar from '/components/Navbar';
 
 import GoogleIcon from '@mui/icons-material/Google';
+import { Fade } from 'react-awesome-reveal';
 
 
 function Login() {
@@ -43,6 +44,7 @@ function Login() {
   }, [auth.currentUser]);
 
   return (
+    <Fade>
     <div>
       <Navbar navstyle={true} />
       <div className={styles.login}>
@@ -91,6 +93,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </Fade>
   );
 }
 
@@ -124,6 +127,7 @@ function SignUp() {
   };
 
   return (
+    <Fade>
     <div>
       <Navbar navstyle={true} />
       <div className={styles.login}>
@@ -182,6 +186,7 @@ function SignUp() {
         </div>
       </div>
     </div>
+    </Fade>
   );
 }
 
@@ -196,6 +201,7 @@ export default function Auth() {
   }, [auth.currentUser]);
 
   return (
+    <Fade>
     <>
       {authMethod ? <SignUp /> : <Login />}
       <div className={styles.auth__method}>
@@ -217,5 +223,6 @@ export default function Auth() {
         </Box>
       </div>
     </>
+    </Fade>
   );
 }
