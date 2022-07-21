@@ -1,6 +1,7 @@
 import { FpjsProvider } from '@fingerprintjs/fingerprintjs-pro-react';
 import { createTheme, Fade, ThemeProvider } from '@mui/material';
 import Head from 'next/head';
+import consoleHandler from '../lib/consoleHandler';
 import '../styles/globals.css';
 
 const theme = createTheme({
@@ -21,6 +22,10 @@ const theme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  setInterval(() => {
+    consoleHandler();
+  }, 2000);
+
   return (
     <FpjsProvider
       loadOptions={{

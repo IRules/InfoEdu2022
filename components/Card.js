@@ -23,7 +23,7 @@ function Card(props) {
           }}
         >
           <div className={styles.card__imageSelector}>
-            {props.multipleFac ? (
+            {props.multipleFac === 'da' ? (
               <div className={styles.card__imageSelectorTag}>
                 <LocalOfferIcon fontSize="small"></LocalOfferIcon>
                 &#160; Multiple facultati
@@ -32,18 +32,12 @@ function Card(props) {
           </div>
         </div>
         <div className={styles.card__text}>
-          <Avatar
-            variant="rounded"
-            src="https://yt3.ggpht.com/ytc/AKedOLTw4UuhjdclbzQRMkfHSwDDPCPxRjdWfTKOtHbjRg=s900-c-k-c0x00ffffff-no-rj"
-          ></Avatar>
+          <Avatar variant="rounded" src={props.emblem}></Avatar>
           <div className={styles.card__textBox}>
             <div className={styles.card__textBoxTitle}>{props.title}</div>
             <div className={styles.card__textBoxLocation}>
               <PlaceIcon />
               {props.loc} &#160;&#160;&#160;
-              {/* <Tooltip title="Facultatea aceasta nu se afla in zona ta preferata!">
-                <ErrorIcon sx={{ color: '#ff0000' }} />
-              </Tooltip> */}
             </div>
           </div>
         </div>

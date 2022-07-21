@@ -1,7 +1,7 @@
 .admin {
     background-color: #000;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: grid;
 }
 
@@ -11,6 +11,8 @@
     align-items: center;
     gap: 40px;
     grid-template-columns: auto auto auto;
+    padding-top: 120px;
+    padding-bottom: 10vh;
 }
 
 .admin__card {
@@ -21,6 +23,7 @@
     display: grid;
     justify-content: center;
     align-items: center; 
+    padding-left: 5%;
     color: var(--color-fg);
 }
 
@@ -122,3 +125,15 @@
     justify-content: center;
     margin-left: 10px;
 }
+
+@media screen and (max-width: 1830px) {
+    .admin__cardContainer {
+      grid-template-columns: auto auto;
+    }
+  }
+
+  @media screen and (max-width: 1080px) {
+    .admin__cardContainer {
+      grid-template-columns: auto;
+    }
+  }

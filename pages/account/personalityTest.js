@@ -44,18 +44,23 @@ function PersonalityTest() {
   };
 
   const handleSubmit = async () => {
-    await axios
-      .post('/api/account/submitPersonalityTest', {
-        values: value,
-        token: auth.currentUser.toJSON().stsTokenManager.accessToken,
-      })
-      .then((res) => {
-        Router.push('/account');
-      })
-      .catch((err) => {
-        setError(err.response.data.message);
-        setOpen(true);
-      });
+    if (value.length === 120) {
+      await axios
+        .post('/api/account/submitPersonalityTest', {
+          values: value,
+          token: auth.currentUser.toJSON().stsTokenManager.accessToken,
+        })
+        .then((res) => {
+          Router.push('/account');
+        })
+        .catch((err) => {
+          setError(err.response.data.message);
+          setOpen(true);
+        });
+    } else {
+      setError('You must answer all questions!');
+      setOpen(true);
+    }
   };
   return (
     <Fade>

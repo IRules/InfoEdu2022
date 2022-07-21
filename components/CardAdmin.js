@@ -35,7 +35,7 @@ function CardAdmin(props) {
         <div className={styles.admin__cardStatisticsClicks}>
           <div className={styles.admin__cardStatisticsClicksName}>Recenzie</div>
           <div className={styles.admin__cardStatisticsClicksNumber2}>
-            {props.rating}
+            {(Math.round(props.rating * 100) / 100).toFixed(1)}
           </div>
         </div>
         <div className={styles.admin__cardStatisticsClicks2}>

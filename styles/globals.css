@@ -53,3 +53,7 @@ a:link {
   border-radius: 10px;
   border: 3px none #ffffff;
 }
+
+button {
+  text-transform: none !important;
+}

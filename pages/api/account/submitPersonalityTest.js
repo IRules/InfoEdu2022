@@ -129,7 +129,7 @@ export default async function handler(req, res) {
           values[113] +
           values[119];
 
-        let artistic =
+        const artistic =
           values[6] +
           values[12] +
           values[18] +
@@ -151,7 +151,10 @@ export default async function handler(req, res) {
           values[114] +
           values[120];
 
+        const nothing = 0;
+
         const result = [
+          nothing,
           realist,
           conventional,
           social,
@@ -160,15 +163,27 @@ export default async function handler(req, res) {
           artistic,
         ];
 
+        let max = 0;
+        let index = 0;
+
+        for (let i = 1; i < 6; i++) {
+          if (result[i] > max) {
+            max = result[i];
+            index = i;
+          }
+        }
+
         await db
           .collection('users')
           .doc(decodedToken.uid)
           .update({
-            personality: result.sort((a, b) => b - a)[5],
+            personality: index,
+          })
+          .then(() => {
+            res.status(200).json({
+              message: 'Success',
+            });
           });
-        res.status(200).json({
-          message: 'Success',
-        });
       } else {
         console.log('not ok');
         res.status(400).json({

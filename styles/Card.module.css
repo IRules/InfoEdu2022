@@ -1,8 +1,9 @@
 .card {
-    height: 300px;
+    min-height: 300px;
     width: 330px;
     background-color: #0a0b0c;
     border-radius: 20px;
+    padding-bottom: 10px;
 }
 
 .card__image {
@@ -37,7 +38,8 @@
 }
 
 .card__text {
-    height: 80px    ;
+    padding-top: 10px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;

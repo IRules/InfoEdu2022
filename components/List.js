@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/List.module.css';
 import Card from './Card';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -29,20 +29,53 @@ function List(props) {
   };
   const [domeniu, setDomeniu] = React.useState('*');
   const [oras, setOras] = React.useState('');
-  const [multipleFac, setMultipleFac] = React.useState('da');
+  const [multipleFac, setMultipleFac] = React.useState('');
   const [search, setSearch] = React.useState('');
+  const [facultatiList, setFacultatiList] = React.useState(null);
 
-  const [facultati] = useCollectionData(
+  let [facultati] = useCollectionData(
     query(collection(firestore, 'facultati'))
   );
+  console.log(facultati);
 
   const handleReset = () => {
     setDomeniu('*');
     setOras('');
-    setMultipleFac('da');
-    handleClose;
+    setMultipleFac('');
+    handleClose();
   };
 
+  const reloadList = () => {
+    setFacultatiList(null);
+    setTimeout(() => {
+      setFacultatiList(
+        facultati &&
+          facultati.map((fac) =>
+            fac.name.toLowerCase().includes(search.toLocaleLowerCase()) &&
+            fac.loc.includes(oras) &&
+            fac.facultati.includes(domeniu) &&
+            fac.multipleFac.includes(multipleFac) ? (
+              <Card
+                key={fac.id}
+                multipleFac={fac.multipleFac}
+                image={fac.cover}
+                title={fac.name}
+                loc={fac.loc}
+                pid={fac.slug}
+                emblem={fac.emblem}
+              />
+            ) : null
+          )
+      );
+    }, 100);
+  };
+  useEffect(() => {
+    reloadList();
+  }, [facultati]);
+
+  useEffect(() => {
+    reloadList();
+  }, [search, oras, domeniu, multipleFac]);
   const domenii = [
     {
       label: 'Stiinte Matematice',
@@ -170,7 +203,10 @@ function List(props) {
           label="Caută"
           size="small"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value ? e.target.value : '');
+            reloadList();
+          }}
         />
         &#160; &#160;
         <IconButton onClick={handleClickOpen}>
@@ -190,7 +226,11 @@ function List(props) {
                 options={orase}
                 renderInput={(params) => <TextField {...params} label="Oras" />}
                 onChange={(e, value) => {
-                  setOras(value.label);
+                  try {
+                    setOras(value.label ? value.label : '');
+                  } catch {
+                    setOras('');
+                  }
                   console.log(oras);
                 }}
                 value={oras}
@@ -214,7 +254,7 @@ function List(props) {
                   <TextField {...params} label="Multiple facultati" />
                 )}
                 onChange={(e, value) => {
-                  setMultipleFac(value ? value.label : 'da');
+                  setMultipleFac(value ? value.label : '');
                   console.log(multiFac);
                 }}
                 value={multipleFac}
@@ -225,13 +265,15 @@ function List(props) {
             <Button onClick={handleReset} autoFocus>
               Reset
             </Button>
+            <Button onClick={handleClose} autoFocus>
+              Gata
+            </Button>
           </DialogActions>
         </Dialog>
       </div>
       <div className={styles.list__container}>
-        {props.searchValue}
-        {facultati &&
-          facultati.map((fac) =>
+        {/* {facultati &&
+          facultati.map((fac) => {
             fac.name.toLowerCase().includes(search) &&
             fac.loc.includes(oras) &&
             fac.facultati.includes(domeniu) &&
@@ -243,18 +285,13 @@ function List(props) {
                 title={fac.name}
                 loc={fac.loc}
                 pid={fac.slug}
+                emblem={fac.emblem}
               />
             ) : (
-              <span
-                style={{
-                  color: '#fff',
-                  marginLeft: '120px',
-                }}
-              >
-                <b>Nu am putut găsi facultatea!</b>
-              </span>
-            )
-          )}
+              <>s</>
+            );
+          })} */}
+        {facultatiList}
         {/* <Card
           multipleFac={true}
           image="https://univero.cc/public/media/university/imgs/image-1/1616069697_118939302.jpg"

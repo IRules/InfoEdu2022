@@ -26,6 +26,7 @@ function Review(props) {
   const banUser = () => {
     axios.post(`/api/admin/banUser`, {
       user: props.uid,
+      token: auth.currentUser.toJSON().stsTokenManager.accessToken,
     });
   };
 
