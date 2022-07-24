@@ -27,20 +27,13 @@ function MyApp({ Component, pageProps }) {
   }, 2000);
 
   return (
-    <FpjsProvider
-      loadOptions={{
-        apiKey: 'OuLlP8IbQByBH1aHzwet',
-        endpoint: 'https://verifier.tomaind.com',
-        region: 'eu',
-      }}
-    >
       <ThemeProvider theme={theme}>
         <Head>
           <title>ProjectAlpha</title>
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>
-    </FpjsProvider>
+      
   );
 }
 
