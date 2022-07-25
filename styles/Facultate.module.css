@@ -1,5 +1,5 @@
 .facultate {
-    background-color: #0a0b0c;
+    background-color: var(--color-bg);
     display: grid;
     padding: 20px;
     justify-content: center;

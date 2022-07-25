@@ -9,7 +9,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Anton', sans-serif;
-  background-color: #0a0b0c;
+  background-color: var(--color-bg);
 }
 
 a {
@@ -26,7 +26,7 @@ a:link {
 }
 
 :root{
-  --color-fg: #fff;
+  --color-fg: #f1f2f3;
   --color-bg2: #282b30;
   --color-bg: #1d1f22;
   --color1: #ff8150;

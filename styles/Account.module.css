@@ -22,7 +22,7 @@
     grid-area: account;
     width: 35vw;
     height: 250px;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 30px;
     display: flex;
     justify-content: center;
@@ -50,9 +50,9 @@
     grid-area: tests;
     width: 600px;
     height: 650px;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 30px;
-    color: #ffffff;
+    color: var(--color-fg);
 }
 
 .settings__containerTestInfo {
@@ -102,7 +102,7 @@
     grid-area: preferences;
     width: 35vw;
     height: 340px;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 30px;
     display: grid;
     align-items: center;

@@ -14,7 +14,7 @@
 
 .list__container {
     margin-top: 2vh;
-    background-color: #1d1f22;
+    background-color: var(--color-bg);
     height: 85vh;
     width: 100vw;
     border-radius: 20px 0px 0px 0px;
@@ -33,7 +33,7 @@
 
 .list__container {
     scrollbar-width: 8px;
-    scrollbar-color: #ff5404 #1d1f22;
+    scrollbar-color: var(--color1) var(--color-bg);
   }
   .list__container::-webkit-scrollbar {
     width: 8px;
@@ -44,9 +44,9 @@
   }
   
   .list__container::-webkit-scrollbar-thumb {
-    background-color: #ff5404;
+    background-color: var(--color1);
     border-radius: 10px;
-    border: 3px none #ffffff;
+    border: 3px none var(--color-fg);
   }
 
   @media screen and (max-width: 1830px) {

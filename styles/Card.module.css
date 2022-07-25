@@ -1,7 +1,7 @@
 .card {
     min-height: 300px;
     width: 330px;
-    background-color: #0a0b0c;
+    background-color: var(--color-bg2);
     border-radius: 20px;
     padding-bottom: 10px;
 }
@@ -33,7 +33,7 @@
     border-radius: 10px 0px 0px 10px;
     width: 150px;
     height: 22px;
-    background-color: #0a0b0c;
+    background-color: var(--color-bg2);
     opacity: 0.8;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .card__textBoxTitle {
-    color: #f1f2f3;
+    color: var(--color-fg);
 }
 
 .card__textBoxLocation {
