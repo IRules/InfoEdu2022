@@ -4,6 +4,7 @@
     display: grid   ;
     align-items: baseline;
     justify-content: center;
+    margin-bottom: 100px;
 }
 
 .personalityTest__container {

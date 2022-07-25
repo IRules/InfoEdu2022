@@ -7,6 +7,7 @@ import Navbar from '../../components/Navbar';
 import { auth, firestore } from '../../lib/firebase';
 import styles from '../../styles/Admin.module.css';
 import { useRouter } from 'next/router';
+import Footer from '../../components/Fotter';
 
 function Admin() {
   const router = useRouter();
@@ -56,6 +57,7 @@ function Admin() {
               />
             ))}
         </div>
+        <Footer />
       </div>
     </>
   );

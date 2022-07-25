@@ -1,13 +1,10 @@
 import styles from '../styles/Index.module.css';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Fade } from 'react-awesome-reveal';
 
 import Navbar from '../components/Navbar';
+import Footer from '../components/Fotter';
 
 function Landing() {
   // Navbar sticky relativ cu scroll
@@ -158,29 +155,7 @@ function Landing() {
           </h3>
           <p className={styles.citattext}>~Echipa Alpha~</p>
         </section>
-        {/*--------------Footer----------------*/}
-        <section className={styles.footer}>
-          <ul className={styles.ul}>
-            <li className={styles.li}>
-              <Link href="/">Acasă</Link>
-            </li>
-            <div className={styles.vertical__line} />
-            <li className={styles.li}>
-              <Link href="/about">Despre</Link>
-            </li>
-            <div className={styles.vertical__line} />
-            <li className={styles.li}>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <div className={styles.vertical__line} />
-            <li className={styles.li}>
-              <Link href="/dash">Login</Link>
-            </li>
-          </ul>
-          <p className={styles.p}>
-            ~Made with <FontAwesomeIcon icon={faHeart} /> by AlphaTeam~
-          </p>
-        </section>
+        <Footer />
       </div>
     </Fade>
   );

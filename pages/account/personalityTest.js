@@ -14,6 +14,7 @@ import styles from '../../styles/PersonalityTest.module.css';
 import Router from 'next/router';
 import axios from 'axios';
 import { Fade } from 'react-awesome-reveal';
+import Footer from '../../components/Fotter';
 
 function PersonalityTest() {
   const value = [];
@@ -128,6 +129,7 @@ function PersonalityTest() {
           <br></br>
         </div>
       </>
+      <Footer />
     </Fade>
   );
 }

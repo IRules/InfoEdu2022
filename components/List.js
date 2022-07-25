@@ -16,6 +16,7 @@ import {
   TextField,
 } from '@mui/material';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import Footer from './Fotter';
 
 function List(props) {
   const [open, setOpen] = React.useState(false);
@@ -271,8 +272,9 @@ function List(props) {
           </DialogActions>
         </Dialog>
       </div>
-      <div className={styles.list__container}>
-        {/* {facultati &&
+      <div className={styles.list__content}>
+        <div className={styles.list__container}>
+          {/* {facultati &&
           facultati.map((fac) => {
             fac.name.toLowerCase().includes(search) &&
             fac.loc.includes(oras) &&
@@ -291,14 +293,16 @@ function List(props) {
               <>s</>
             );
           })} */}
-        {facultatiList}
-        {/* <Card
+          {facultatiList}
+          {/* <Card
           multipleFac={true}
           image="https://univero.cc/public/media/university/imgs/image-1/1616069697_118939302.jpg"
           title="Universitatea Babeș-Bolyai"
           loc="Cluj-Napoca"
           pid="ubbcluj"
         /> */}
+        </div>
+        <Footer />
       </div>
     </div>
   );

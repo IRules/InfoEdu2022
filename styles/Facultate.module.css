@@ -22,21 +22,23 @@
     border-radius: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    
 }
 
 .facultate__infoDescription {
     width: 45vw;
-    height: 70vh;
-    background-color: var(--color-bg);
+    min-height: 70vh;
+    background-color: var(--color1);
     border-radius: 20px 0px 0px 20px;
-    overflow: auto;
+    padding: 40px;
 }
 
 .facultate__infoReviews {
     width: 45vw;
     height: 70vh;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 0px 20px 20px 0px;
+    padding: 40px;
 }
 
 .facultate__bottom {
@@ -50,18 +52,18 @@
 .facultate__bottomChat {
     width: 44vw;
     height: 50vh;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 20px;
 }
 
 .facultate__bottomInfo {
     width: 44vw;
     height: 50vh;
-    background-color: var(--color-bg);
+    background-color: var(--color1);
     border-radius: 20px;
     display: grid;
     align-items: center;
-    padding: 20px;
+    padding: 40px;
     gap: 0px
 }
 
@@ -77,7 +79,7 @@
     
     .facultate__infoDescription {
         width: 90vw;
-        height: 70vh;
+        min-height: 70vh;
         border-radius: 20px;
     }
     
