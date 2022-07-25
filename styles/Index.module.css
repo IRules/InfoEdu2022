@@ -369,7 +369,17 @@
       display: none;
     }
 
+    .text_box .h1{
+      padding-top: 80px;
+      font-size: 30px;
+      text-align: left;
+      padding-left: 8%;
+    }
 
+    .text_box .p {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
 
 }
 
